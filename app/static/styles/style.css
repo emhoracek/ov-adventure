@@ -1,0 +1,133 @@
+/*
+COLORS:
+	bright green: #6AAC70
+	bright blue: #67B5AB
+	super dark brown: #2E2C26
+	dark brown: #5C594D
+	light beige: #DEDDC5
+	lighter beige: #F2F1E8
+	light golden: #FDE8B3 
+	
+*/
+
+
+body { margin: 0; padding: 0; font-size: 14px;
+       background-color: #5C594D }
+
+header { margin: 0; padding: 0;
+	 border: 0.1em solid #333;
+         background-image: url("../images/lrgImages/oglebaytrees.jpg");
+         text-align: center;
+         border-radius: 1em;
+	 font-family: sans;
+	 color: #5C594D } 
+
+nav ul { padding-left: 1em }
+nav ul li { /* display: inline;*/
+	    float: left;
+	    display: block;
+	    text-decoration: none;
+	    text-indent: 0;
+	    padding: 0.5em;
+	    margin: 0.5em;
+            border-radius: 1em;
+	    background-color: #DEDDC5  }
+nav a { color: #2E2C26;
+	text-decoration: none }
+
+#directory { margin: 0;
+	     padding: 0;
+	     border-top-right-radius: 1em }
+#list ul { display: block;
+	   text-indent: 0; 
+           list-style-type: none; 
+	   margin: 0;
+	   /*margin-top: -1em; /* to cover tab */
+	   padding: 1em 2em;
+	   border-radius: 0 1em 0em 0;
+	   background-color: #DEDDC5;
+	   /*overflow: auto;*/
+	   box-shadow: 0.5em 0.25em 0.25em #333 }
+#list li { background-color: #F2F1E8;
+	   padding: 1em;
+	   margin: 0.5em 0em;
+	   border: 1px solid #5C594D }
+
+
+#directory a { color:  #67B5AB }
+#directory a:visited { color:  #67B5AB }
+#directory a:hover { color: #67B5AB }
+#directory a:active { color: #67B5AB }
+
+#directory form { background-color: #DEDDC5;
+		  width: 25em;
+		  margin: 0;
+		  padding-top: 1em;
+		  padding-left: 1em;
+		  border-radius: 0.5em 0.5em 0 0;
+		  box-shadow: 0.5em 0.25em 0.25em #333 }
+
+#map { width: 30em;
+       height: 30em;
+       background-color: green;
+       background-image: url("../images/ohiovalleymap.png");
+       border: 1px solid darkBlue;
+       border-radius: 1em }
+
+#activitiesList { background-color: #67B5AB;
+		  width: 100%;
+		  float: left;
+		  clear: both;
+   	          border-bottom-left-radius: 1em }
+
+footer { background-color: #67B5AB;
+	 padding: 1em;
+	 margin: 0 }
+
+/* Large screens */
+
+@media all and (min-width: 60em) {
+
+/*
+header { position: absolute;
+         top: 1em;
+         left: 1em;
+         right: 32em;
+         bottom: 32em }
+*/
+
+header { margin-top: 1em;
+	 margin-left: 1em;
+	 margin-right: 32em;
+	 height: 20em }
+
+
+#activitiesList { position: fixed;
+		  right: 1em;
+		  top: 1em;
+		  bottom: 32em;
+		  width: 30em;
+		  overflow: auto }
+
+#map { position: fixed;
+       right: 1em;
+       bottom: 1em }
+/*
+#directory { position: absolute;
+	     height: 31.5em;
+	     right: 30em;
+	     bottom: 0;
+             left: 1em }
+*/
+#directory { position: static;
+	     margin-top: 1em;
+	     margin-left: 1em;
+	     margin-right:32em }
+#list ul { margin: 0;
+	   margin-bottom: 1em;
+	   padding: 1em 2em }
+
+} /* end larger screens */
+
+
+

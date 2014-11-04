@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block directory %}
+
+	<div id="list">
+
+	<form>
+	<label>Search: </label><input type="text">
+	</form>
+
+	<ul>
+	{% for place in places %}
+
+	<li><a href="{{ url_for( '.places', place=place.name ) }}">{{ place.name }}</a> &#8212; {{ place.description }}
+			&#8212; at {{ place.area }} </li>
+			
+	{% else %}
+
+	<p>No matches.</p>
+	
+	{% endfor %}
+	</ul>
+
+	</div>
+
+{% endblock directory %}
