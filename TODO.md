@@ -1,0 +1,25 @@
+To do:
+
+-[ ] Pages
+	-[ ] index
+		-[ ] list first 10 of all places
+		-[ ] display those places on map
+		-[ ] list all activities in activity list
+		-[x] template
+		-[x] view
+	-[ ] activities
+		-[ ] filter places by activity
+		-[ ] display an image related to the activity
+		-[x] template (same as index)
+		-[x] view
+	-[ ] places
+		-[ ] create template
+		-[ ] list information about place
+		-[ ] template
+		-[ ] view
+-[ ] Database
+	-[x] schema
+	-[ ] get data from Jesse
+	-[ ] queries
+-[ ] Server
+-[ ] Hosting
