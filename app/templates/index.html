@@ -11,8 +11,11 @@
 	<ul>
 	{% for place in places %}
 
-	<li><a href="{{ url_for( '.places', place=place.name ) }}">{{ place.name }}</a> &#8212; {{ place.description }}
-			&#8212; at {{ place.area }} </li>
+	<li><a href="{{ url_for( '.places', place=place.name ) }}"
+		    class="name">
+		    {{ place.name }}</a> 
+	    <span class="description">{{ place.description }}</span>
+	    <span class="area">{{ place.area }}</span></li>
 			
 	{% else %}
 

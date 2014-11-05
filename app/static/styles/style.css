@@ -23,8 +23,7 @@ header { margin: 0; padding: 0;
 	 color: #5C594D } 
 
 nav ul { padding-left: 1em }
-nav ul li { /* display: inline;*/
-	    float: left;
+nav ul li { float: left;
 	    display: block;
 	    text-decoration: none;
 	    text-indent: 0;
@@ -35,23 +34,32 @@ nav ul li { /* display: inline;*/
 nav a { color: #2E2C26;
 	text-decoration: none }
 
+#activitiesList { background-color: #67B5AB;
+		  width: 100%;
+		  float: left;
+		  clear: both }
+
 #directory { margin: 0;
-	     padding: 0;
-	     border-top-right-radius: 1em }
+	     padding: 0 }
+	     
 #list ul { display: block;
 	   text-indent: 0; 
            list-style-type: none; 
 	   margin: 0;
-	   /*margin-top: -1em; /* to cover tab */
 	   padding: 1em 2em;
 	   border-radius: 0 1em 0em 0;
 	   background-color: #DEDDC5;
-	   /*overflow: auto;*/
 	   box-shadow: 0.5em 0.25em 0.25em #333 }
 #list li { background-color: #F2F1E8;
 	   padding: 1em;
 	   margin: 0.5em 0em;
 	   border: 1px solid #5C594D }
+.name {}
+.description::before { content: " \2014 \00a0"}
+.description {}
+.description::after { content: " \2014 "}
+.area::before { content: " at " }
+.area {}
 
 
 #directory a { color:  #67B5AB }
@@ -74,12 +82,6 @@ nav a { color: #2E2C26;
        border: 1px solid darkBlue;
        border-radius: 1em }
 
-#activitiesList { background-color: #67B5AB;
-		  width: 100%;
-		  float: left;
-		  clear: both;
-   	          border-bottom-left-radius: 1em }
-
 footer { background-color: #67B5AB;
 	 padding: 1em;
 	 margin: 0 }
@@ -87,14 +89,6 @@ footer { background-color: #67B5AB;
 /* Large screens */
 
 @media all and (min-width: 60em) {
-
-/*
-header { position: absolute;
-         top: 1em;
-         left: 1em;
-         right: 32em;
-         bottom: 32em }
-*/
 
 header { margin-top: 1em;
 	 margin-left: 1em;
@@ -107,22 +101,18 @@ header { margin-top: 1em;
 		  top: 1em;
 		  bottom: 32em;
 		  width: 30em;
-		  overflow: auto }
+		  overflow: auto;
+    	          border-bottom-left-radius: 1em }}
 
 #map { position: fixed;
        right: 1em;
        bottom: 1em }
-/*
-#directory { position: absolute;
-	     height: 31.5em;
-	     right: 30em;
-	     bottom: 0;
-             left: 1em }
-*/
+
 #directory { position: static;
 	     margin-top: 1em;
 	     margin-left: 1em;
-	     margin-right:32em }
+	     margin-right:32em;
+	     border-top-right-radius: 1em }
 #list ul { margin: 0;
 	   margin-bottom: 1em;
 	   padding: 1em 2em }
