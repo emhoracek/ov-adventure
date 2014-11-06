@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% if title %}
 		<title> {{ title }} - Outdoor Recreation </title>
 		{% else %}
@@ -25,18 +26,7 @@
 
 	{% for activity in activities %}
 
-		<li><a href="{{ url_for('.activity', activity=activity.name) }}" class="activity">{{ activity.name }}</a></li>
-
-	{% else %}
-
-		<li>Hiking</li>
-		<li>Mountain Biking</li>
-		<li>Trail Biking</li>			
-		<li>Skateboarding</li>
-		<li>Inline or Roller Skating</li>
-		<li>Fishing</li>
-		<li>Kayaking</li>
-		<li>Sailing</li>
+		<li class="activity"><a href="{{ url_for('.activity', activity=activity.name) }}">{{ activity.name }}</a></li>
 
 	{% endfor %}
 
