@@ -25,7 +25,7 @@
 
 	{% for activity in activities %}
 
-		<li><a href="{{ url_for('.activity', activity=activity.name) }}">{{ activity.name }}</a></li>
+		<li><a href="{{ url_for('.activity', activity=activity.name) }}" class="activity">{{ activity.name }}</a></li>
 
 	{% else %}
 
