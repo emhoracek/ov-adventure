@@ -46,13 +46,13 @@ nav a { color: #2E2C26;
 		  margin: 0;
 		  padding-top: 1em;
 		  padding-left: 1em }	     
-#list ul { display: block;
+.list { display: block;
 	   text-indent: 0; 
            list-style-type: none; 
 	   margin: 0;
 	   padding: 1em 2em;
 	   background-color: #DEDDC5 }
-#list li { background-color: #F2F1E8;
+.list li { background-color: #F2F1E8;
 	   padding: 1em;
 	   margin: 0.5em 0em;
 	   border: 1px solid #5C594D }
@@ -62,6 +62,7 @@ nav a { color: #2E2C26;
 .description::after { content: " \2014 "}
 .area::before { content: " at " }
 .area {}
+.numbers { background-color: #DEDDC5; height: 100px }
 #directory a { color:  #67B5AB }
 #directory a:visited { color:  #67B5AB }
 #directory a:hover { color: #67B5AB }
@@ -118,7 +119,7 @@ header { position: static;
 		  border-radius: 0.5em 0.5em 0 0;
 		  box-shadow: 0.5em 0.25em 0.25em #333 }
 
-#list ul { margin: 0;
+.list { margin: 0;
 	   margin-bottom: 1em;
 	   padding: 1em 2em;
 	   border-radius: 0 1em 0em 0;

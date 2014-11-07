@@ -2,13 +2,11 @@
 
 {% block directory %}
 
-	<div id="list">
-
 	<form>
 	<label>Search: </label><input type="text">
 	</form>
 
-	<ul>
+	<ul class="list">
 	{% for place in places %}
 
 	<li><a href="{{ url_for( '.places', place=place.name ) }}"
@@ -17,13 +15,22 @@
 	    <span class="description">{{ place.description }}</span>
 	    <span class="area">{{ place.area }}</span></li>
 			
-	{% else %}
+	{% else %} 
 
 	<p>No matches.</p>
 	
 	{% endfor %}
-	</ul>
 
-	</div>
+	<p class="numbers">
+	NUMBERS HERE
+	{{ numPlaces }} WAAAA
+	{{ numPages }}
+	{% if hasPages %}
+	HELLO
+	{% for _ in (range (numPages|int)) %}
+	<a href="page/{{ loop.index }}">{{loop.index}}</a> </li>
+	{% endfor %}
+	{% endif %}
+	</p>
 
 {% endblock directory %}
