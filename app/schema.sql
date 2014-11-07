@@ -4,7 +4,8 @@ create table places (
 	name text not null,
 	description text not null,
 	areaId integer not null,
-	location text not null,
+	latitude real not null,
+	longitude real not null,
 	FOREIGN KEY(areaId) REFERENCES areas(id) 
 );
 
