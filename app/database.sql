@@ -1,42 +1,77 @@
-INSERT INTO places VALUES(1, 'Park', 
-			'Beautiful Oglebay Park!', 1001, '43,23');
-INSERT INTO places VALUES(2, 'Boats', 'Paddle boats at Oglebay', 1001, '43, 34');
-INSERT INTO places VALUES(3, 'Ski Slopes', 'Skiing at Oglebay', 1001, '341, 324');
+INSERT INTO places VALUES(1, 'Wheeling Park', 'A city park.', 1002, '40.0580813,-80.6671525');
+INSERT INTO places VALUES(2, 'Schenley Pond', 'Paddle boats at Oglebay', 1001, '40.0977693,-80.6630598');
+INSERT INTO places VALUES(3, 'Ski Slopes', 'Skiing at Oglebay', 1001, '@40.0953621,-80.660224');
 INSERT INTO places VALUES (
 	4,
-	'Another place',
-	'Description of place', 
-	1002, 
-	'34, 34');
+	'Good Zoo',
+	'Zoo and nature center', 
+	1001, 
+	'40.0914825,-80.6635319');
 INSERT INTO places VALUES (
 	5,
-	'Another place',
-	'Description of place', 
+	'Wheeling Park pond',
+	'Lots of birds.', 
 	1002, 
-	'34, 34');
+	'40.0590549,-80.6696798');
 INSERT INTO places VALUES (
 	6,
-	'Another place',
-	'Description of place', 
+	'Wheeling park ice skating',
+	"It's almost outdoors.", 
 	1002, 
-	'34, 34');
+	'40.0586479,-80.6668156');
 INSERT INTO places VALUES (
 	7,
-	'Another place',
+	'Wheeling overlook',
 	'Description of place', 
-	1002, 
-	'34, 34');
+	1004, 
+	'40.0799724,-80.7225178');
 INSERT INTO places VALUES (
 	8,
-	'Another place',
+	'Waterfront Park',
 	'Description of place', 
+	1003, 
+	'40.0672014,-80.724915');
+INSERT INTO places VALUES (
+	9, 'Tunnel Green', 'Shelters, roller hockey rink, baseball field, and basketball courts.', 1004, '40.071452,-80.710526');
+INSERT INTO places VALUES (
+	10, "Lewis Wetzel's cave", "A cave near Tunnel Green", 1005, "40.0727302,-80.71052");
+INSERT INTO places VALUES (
+	11,
+	'Good Zoo',
+	'Zoo and nature center', 
+	1001, 
+	'40.0814825,-80.5635319');
+INSERT INTO places VALUES (
+	12,
+	'Wheeling Park pond',
+	'Lots of birds.', 
 	1002, 
-	'34, 34');
-
+	'40.0790549,-80.6196798');
+INSERT INTO places VALUES (
+	13,
+	'Good Zoo',
+	'Zoo and nature center', 
+	1001, 
+	'40.0914825,-80.6335319');
+INSERT INTO places VALUES (
+	14,
+	'Wheeling Park pond',
+	'Lots of birds.', 
+	1002, 
+	'40.0290549,-80.6896798');
+INSERT INTO places VALUES (
+	15,
+	'Wheeling park ice skating',
+	'Almost outdoors.', 
+	1002, 
+	'40.0886479,-80.6968156');
 
 
 INSERT INTO areas VALUES(1001, 'Oglebay');
-INSERT INTO areas VALUES(1002, 'Another area');
+INSERT INTO areas VALUES(1002, 'Wheeling Park');
+INSERT INTO areas VALUES(1003, 'Heritage trail');
+INSERT INTO areas VALUES(1004, 'Smaller city parks');
+INSERT INTO areas VALUES(1005, 'Other public land');
 
 INSERT INTO activities VALUES(1, 'bicycle trails');
 INSERT INTO activities VALUES(2, 'boating');
@@ -46,7 +81,20 @@ INSERT INTO activities VALUES(5, 'hiking');
 INSERT INTO activities VALUES(6, 'sailing');
 INSERT INTO activities VALUES(7, 'fishing');
 INSERT INTO activities VALUES(8, 'hunting');
+INSERT INTO activities VALUES(9, 'swimming');
 
 INSERT INTO joinActPlace VALUES(1, 1, 1);
 INSERT INTO joinActPlace VALUES(2, 2, 1);
 INSERT INTO joinActPlace VALUES(3, 2, 2);
+INSERT INTO joinActPlace VALUES(4, 1, 2);
+INSERT INTO joinActPlace VALUES(5, 1, 3);
+INSERT INTO joinActPlace VALUES(6, 2, 3);
+INSERT INTO joinActPlace VALUES(7, 3, 3);
+INSERT INTO joinActPlace VALUES(8, 1, 4);
+INSERT INTO joinActPlace VALUES(9, 7, 4);
+INSERT INTO joinActPlace VALUES(10, 1, 5);
+INSERT INTO joinActPlace VALUES(11, 1, 6);
+INSERT INTO joinActPlace VALUES(12, 1, 7);
+INSERT INTO joinActPlace VALUES(13, 1, 8);
+INSERT INTO joinActPlace VALUES(14, 9, 8);
+
