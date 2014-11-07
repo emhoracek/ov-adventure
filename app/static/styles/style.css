@@ -68,11 +68,11 @@ nav a { color: #2E2C26;
 #directory a:active { color: #67B5AB }
 
 #map { position: static;
-       width: 30em;
-       height: 30em;
+       width: 40em;
+       height: 40em;
        margin: auto;
-       background-color: green;
-       background-image: url("../images/ohiovalleymap.png");
+       /*background-color: green;
+       background-image: url("../images/ohiovalleymap.png");*/
        border: 1px solid darkBlue }
 
 footer { background-color: #67B5AB;

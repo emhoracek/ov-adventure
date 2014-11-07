@@ -64,4 +64,5 @@ def activity(activity=None):
 	return render_template('index.html',
 			       title=activity,
 			       activities=get_activities_list(),
+			       activity=activity,
 			       places=places )	
