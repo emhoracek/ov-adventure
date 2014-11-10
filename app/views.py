@@ -79,26 +79,27 @@ def index():
 				title='Home',
 				activities=get_activities_list(),
 				places=places,
+				page=1,
 				numPlaces = numPlaces,
 				hasPages=hasPages,
 				numPages= (math.floor (numPages)),
 				map_center = get_average_latlong(places) )
 
 @app.route('/page')
-@app.route('/page/<page>')
+@app.route('/page/<int:page>')
 def page(page=1):
-	page = int(page)
 	placesList = get_place_list()
-	places = shorten_place_list(placesList, page)
 	numPages = math.ceil (float(len(placesList))/ PLACES_PER_PAGE)
 	hasPages = False
 	if (numPages > 1):
-		hasPages = True
+		hasPages = True	
+	places = shorten_place_list(placesList, page)
 	return render_template('index.html',
 			       activities=get_activities_list(),
 			       places=places,
 			       page=page,
 			       numPages = numPages,
+			       hasPages=hasPages,
 			       map_center = get_average_latlong(places)
 			       )			        
 
