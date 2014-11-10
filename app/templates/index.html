@@ -22,13 +22,13 @@
 	{% endfor %}
 
 	<p class="numbers">
-	NUMBERS HERE
-	{{ numPlaces }} WAAAA
-	{{ numPages }}
 	{% if hasPages %}
-	HELLO
 	{% for _ in (range (numPages|int)) %}
-	<a href="page/{{ loop.index }}">{{loop.index}}</a> </li>
+	{% if loop.index == page %}
+		{{loop.index}}
+	{% else %}
+		<a href="/page/{{ loop.index }}">{{loop.index}}</a> </li>
+	{% endif %}
 	{% endfor %}
 	{% endif %}
 	</p>
