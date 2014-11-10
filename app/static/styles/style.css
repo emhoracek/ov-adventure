@@ -62,7 +62,7 @@ nav a { color: #2E2C26;
 .description::after { content: " \2014 "}
 .area::before { content: " at " }
 .area {}
-.numbers { background-color: #DEDDC5; height: 100px }
+.numbers { background-color: #DEDDC5 }
 #directory a { color:  #67B5AB }
 #directory a:visited { color:  #67B5AB }
 #directory a:hover { color: #67B5AB }
