@@ -1,14 +1,14 @@
 To do:
 
 -[ ] Pages
-	-[ ] index
-		-[ ] list first 10 of all places
-		-[ ] display those places on map
-		-[ ] list all activities in activity list
+	-[x] index
+		-[x] list first 10 of all places
+		-[x] display those places on map
+		-[x] list all activities in activity list
 		-[x] template
 		-[x] view
 	-[ ] activities
-		-[ ] filter places by activity
+		-[x] filter places by activity
 		-[ ] display an image related to the activity
 		-[x] template (same as index)
 		-[x] view
@@ -17,9 +17,15 @@ To do:
 		-[ ] list information about place
 		-[ ] template
 		-[ ] view
+-[ ] Design
+	-[ ] Sam-approved design
+	-[ ] Test on various devices
+	-[ ] Add ARIA tags and such
+	-[ ] Get photos
 -[ ] Database
 	-[x] schema
 	-[ ] get data from Jesse
-	-[ ] queries
+	-[x] queries
+	-[ ] whitelist map
 -[ ] Server
 -[ ] Hosting
