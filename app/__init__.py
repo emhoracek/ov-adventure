@@ -41,5 +41,4 @@ def teardown_request(exception):
 from app import views
 
 if __name__ == '__main__':
-	init_db()
 	app.run()

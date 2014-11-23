@@ -22,9 +22,9 @@
 	{% endfor %}
 
 	<p class="numbers">
-	{% if hasPages %}
-	{% for _ in (range (numPages|int)) %}
-	{% if loop.index == page %}
+	{% if page.hasPages %}
+	{% for _ in (range (page.numPages|int)) %}
+	{% if loop.index == page.page %}
 		{{loop.index}}
 	{% else %}
 		<a href="/page/{{ loop.index }}">{{loop.index}}</a> </li>

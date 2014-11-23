@@ -2,7 +2,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% if title %}
-		<title> {{ title }} - Outdoor Recreation </title>
+		<title> {{ page.title }} - Outdoor Recreation </title>
 		{% else %}
 		<title> Welcome to Outdoor Recreation </title>
 		{% endif %}
@@ -19,7 +19,7 @@
 
 	<header>
 
-	<h1>Ohio Valley Adventures: {{ title }} </h1>
+	<h1>Ohio Valley Adventures: {{ page.title }} </h1>
 
 	</header>
 
@@ -31,7 +31,7 @@
 
 	<ul>
 
-	{% for activity in activities %}
+	{% for activity in page.activities %}
 		<li class="activity"><a href="{{ url_for('.activity', activity=activity.name) }}">{{ activity.name }}</a></li>
 	{% endfor %}
 
@@ -56,7 +56,7 @@
 	<script>
 		{% block mapscript %}
 
-		var map = L.map('map').setView([{{ map_center.latitude }}, {{ map_center.longitude }}], 12);
+		var map = L.map('map').setView([{{ page.mapCenter.latitude }}, {{ page.mapCenter.longitude }}], 12);
 
 		/*map.locate({setView: true, maxZoom: 16});*/
 
