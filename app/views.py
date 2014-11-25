@@ -5,19 +5,18 @@ import os, math
 @app.route('/')
 @app.route('/index')
 def index():
-  thisPage = pages.FrontPage('Home',None,1)
+  thisPage = pages.frontPage('Home',None,1)
   return render_template('index.html',
           page=thisPage,
-          places=thisPage.places)
-
+          places=thisPage['places'])
 
 @app.route('/page')
 @app.route('/page/<int:page>')
 def page(page=1):
-  thisPage = pages.FrontPage('Page %s '% page, None, page)
+  thisPage = pages.frontPage('Page %s '% page, None, page)
   return render_template('index.html',
           page=thisPage,
-          places=thisPage.places)			        
+          places=thisPage['places'])			        
 
 @app.route('/places')
 @app.route('/places/<place>')
@@ -29,8 +28,10 @@ def places(place=None):
 @app.route('/activities')
 @app.route('/activities/<activity>')
 def activity(activity=None):
-  thisPage = pages.FrontPage(activity, activity, 1)
+  thisPage = pages.frontPage(activity, activity, 1)
   return render_template('index.html',
           page=thisPage,
-          places=thisPage.places)
+          places=thisPage['places'])
+
+
 				

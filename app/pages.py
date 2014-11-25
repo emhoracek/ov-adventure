@@ -1,31 +1,33 @@
 from flask import g
-from app import dbqueries, placeList
+from app import dbqueries
+from placeList import PlaceList
 import math
 
 PLACES_PER_PAGE = 10
 
-class FrontPage (object):
-  def __init__(self, title='Home',
-                     activity=None,
-                     page=1):
-    self.title=title
-    self.activities = dbqueries.get_activities_list()
-    self.placesList = self.getPlaceList(activity)
-    self.page = page
-    self.numPlaces = self.placesList.length() / PLACES_PER_PAGE
-    self.numPages = math.ceil (float(self.placesList.length()) / 
+def frontPage (title='Home', activity=None, page=1):
+    placesList = getPlaceList(activity)
+    numPlaces = placesList.length() / PLACES_PER_PAGE
+    numPages = math.ceil (float(placesList.length()) / 
                                       PLACES_PER_PAGE)
-    if (self.numPages > 1): 
-      self.hasPages = True
+    if (numPages > 1): 
+      hasPages = True
     else:
-      self.hasPages = False
-    self.places = self.placesList.shorten_place_list(page, PLACES_PER_PAGE)
-    self.mapCenter = self.placesList.get_average_latlong(self.places)
+      hasPages = False
+    places = placesList.shorten_place_list(page, PLACES_PER_PAGE)
+    return dict(title= title,
+             activities= dbqueries.get_activities_list(),
+             page= page,
+             numPlaces= numPlaces,
+             numPages= numPages,
+             hasPages= hasPages,
+             places= places, 
+             mapCenter= placesList.get_average_latlong(places))
     
-  def getPlaceList (self, activity):
+def getPlaceList (activity):
     if (activity == None):
       cur = dbqueries.query_db(dbqueries.full_query)
-      return placeList.PlaceList(cur)
+      return PlaceList(cur)
     else:
       cur = dbqueries.query_db(dbqueries.query_join, (activity,))
-      return placeList.PlaceList(cur)
+      return PlaceList(cur)
