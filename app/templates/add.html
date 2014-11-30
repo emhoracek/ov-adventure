@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="addForm">
+
+<form name="addPlace">
+
+<label>Place:</label><input type="text" name="placeName">
+<label>Description:</label><input type="text" name="placeDescription">
+<label>Activities:</label>
+
+list activities tags
+
+<label>Add new activity</label><input type="text" name="activity">
+
+<label>Category:</label>
+
+list categories
+
+<label>Add new category</label><input type="text' name="category">
+
+<label>GPS coordinates:</label><input type="text" name="latitude">, <input type="text" name="longitude"> or <input type="button" value="Use Current Location" 
+
+<input type="button" value="Submit">
+
+</form>
+
+</div>
+
+{% endblock %}

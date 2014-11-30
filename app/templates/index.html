@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 
-{% block directory %}
+{% block nav %}
+	<nav id="activitiesList">
+
+	<ul>
+	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
+	{% for listActivity in page.activities %}
+		{% if listActivity==activity %}
+		<li class="activity selected">
+		{% else %}
+		<li class="activity">
+		{% endif %}<a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
+	{% endfor %}
+		<li class="activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+
+	</ul>
+
+	</nav>	
+{% endblock nav %}
+
+{% block main %}
+
+	<div id="directory">
 
 	<form>
 	<label>Search: </label><input type="text">
@@ -8,17 +29,13 @@
 
 	<ul class="list">
 	{% for place in places %}
-
 	<li><a href="{{ url_for( '.places', place=place.name ) }}"
 		    class="name">
 		    {{ place.name }}</a> 
 	    <span class="description">{{ place.description }}</span>
-	    <span class="area">{{ place.area }}</span></li>
-			
+	    <span class="area">{{ place.area }}</span></li>	
 	{% else %} 
-
 	<p>No matches.</p>
-	
 	{% endfor %}
 
 	<p class="numbers">
@@ -33,4 +50,40 @@
 	{% endif %}
 	</p>
 
-{% endblock directory %}
+	</div>
+{% endblock main %}
+
+{% block script %}
+	<script>
+		var map = L.map('map').setView([{{ page.mapCenter.latitude }}, {{ page.mapCenter.longitude }}], 12);
+
+		/*map.locate({setView: true, maxZoom: 16});*/
+
+		L.tileLayer('http://localhost/osm/{z}/{x}/{y}.png', {
+    			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+			maxZoom: 18
+		}).addTo(map);
+
+		function onLocationFound(e) {
+		    var radius = e.accuracy / 2;
+
+		    L.marker(e.latlng).addTo(map)
+		        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+		    L.circle(e.latlng, radius).addTo(map);
+		}
+
+		map.on('locationfound', onLocationFound);
+	
+		function onLocationError(e) {
+		    alert(e.message);
+		}
+
+		map.on('locationerror', onLocationError);
+
+		{% for place in places %} 
+		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map);
+		{% endfor %}
+
+	</script>
+{% endblock script %}

@@ -27,23 +27,9 @@
 
 	</div>
 
-	<nav id="activitiesList">
-
-	<ul>
-
-	{% for activity in page.activities %}
-		<li class="activity"><a href="{{ url_for('.activity', activity=activity.name) }}">{{ activity.name }}</a></li>
-	{% endfor %}
-
-	</ul>
-
-	</nav>	
+	{% block nav %} {% endblock %}
 	
-	<div id="directory">
-	
-	{% block directory %} {% endblock directory %}
-
-	</div>
+	{% block main %} {% endblock main %}
 
 	<footer>
 	
@@ -53,42 +39,8 @@
 
 	</footer>
 
-	<script>
-		{% block mapscript %}
+	{% block script %} {% endblock %}
 
-		var map = L.map('map').setView([{{ page.mapCenter.latitude }}, {{ page.mapCenter.longitude }}], 12);
-
-		/*map.locate({setView: true, maxZoom: 16});*/
-
-		L.tileLayer('http://localhost/osm/{z}/{x}/{y}.png', {
-    			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-			maxZoom: 18
-		}).addTo(map);
-
-		function onLocationFound(e) {
-		    var radius = e.accuracy / 2;
-
-		    L.marker(e.latlng).addTo(map)
-		        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-		    L.circle(e.latlng, radius).addTo(map);
-		}
-
-		map.on('locationfound', onLocationFound);
-	
-		function onLocationError(e) {
-		    alert(e.message);
-		}
-
-		map.on('locationerror', onLocationError);
-
-		{% for place in places %} 
-		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map);
-		{% endfor %}
-
-		{% endblock %}
-
-	</script>
 </body>
 
 </html>
