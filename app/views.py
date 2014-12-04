@@ -1,5 +1,5 @@
-from flask import render_template, g, request, session, flash, redirect, url_for
-from app import app, pages, dbqueries, placeList
+from flask import render_template, g, request, session, flash, redirect, url_for, abort
+from app import app, pages, dbqueries, dbinserts, placeList
 import os, math
 
 @app.route('/')
@@ -50,15 +50,25 @@ def login():
                            page=thisPage)
 
 @app.route('/add')
-def addPlace():
+def add():
+  if not session.get('logged_in'):
+        abort(401)
   thisPage = pages.frontPage()
   return render_template('add.html',
             page=thisPage )
 
 @app.route('/new', methods=['POST'])
-def add_entry():
+def new():
     if not session.get('logged_in'):
         abort(401)
+    g.db.execute(dbinserts.add_new_place,
+                 [ 5131313,
+                   request.form['name'], 
+                   request.form['description'],
+                   1001,
+                   request.form['latitude'],
+                   request.form['longitude']])
+    g.db.commit()
     flash('New entry was successfully posted')
     return redirect(url_for('index'))
 

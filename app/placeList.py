@@ -6,8 +6,8 @@ class PlaceList (object):
 		self.list = [dict(name=row[0], 
 		                  description=row[1],
 		                  area=row[2],
-		         	        latitude=row[3],
-		          	      longitude=row[4]) for row in cur]
+		         	  latitude=row[3],
+		          	  longitude=row[4]) for row in cur]
   def length(self):
 		return len(self.list)
 
@@ -24,8 +24,9 @@ class PlaceList (object):
     average_longitude = 0
     placeLength = len(listPlaces)
     for place in listPlaces:
-      total_latitude = place['latitude'] + total_latitude
-      total_longitude = place['longitude'] + total_longitude
+      if (place['latitude'] and place['longitude']):
+      	total_latitude = place['latitude'] + total_latitude
+      	total_longitude = place['longitude'] + total_longitude
     if (placeLength == 0):
       average_latitude = 0
       average_longitude = 0

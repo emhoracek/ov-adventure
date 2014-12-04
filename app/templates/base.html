@@ -23,16 +23,18 @@
 <body>
 	<header>
 
-<div class=metanav>
-  {% if not session.logged_in %}
-    <a href="{{ url_for('login') }}">log in</a>
-  {% else %}
+  {% if session.logged_in %}
+  <div class=metanav>
+    Hello, Jesse. <a href="{{ url_for('add') }}">Add new place.</a>
     <a href="{{ url_for('logout') }}">log out</a>
-  {% endif %}
   </div>
+  {% endif %}
+	
+
   {% for message in get_flashed_messages() %}
-    <div class=flash>{{ message }}</div>
+    <span class=flash>{{ message }}</span>
   {% endfor %}
+
 
 	<h1>Ohio Valley Adventures: {{ page.title }} </h1>
 
@@ -50,7 +52,11 @@
 	
 	<p>All data (c) Jesse Mestrovic. 
 
-	   Design by <a href="http://www.daydrea.me">daydrea.me</a></p>
+	   Design by <a href="http://www.daydrea.me">daydrea.me</a>
+
+	   {% if not session.logged_in %}
+	   <a href="{{ url_for('login') }}">log in</a></p>
+	   {% endif %}
 
 	</footer>
 

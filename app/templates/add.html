@@ -16,25 +16,24 @@
 
 <div>
 
-<form class="addForm" action="" method="post" name="addPlaceForm">
+<form class="addForm" action="{{ url_for('new') }}" method="post" name="addPlaceForm">
 
-<p><label for="placeName">Place:</label><input type="text" name="placeName" required> </p>
-<p><label for="placeDescription">Description:</label><input type="text" name="placeDescription"></p>
+<p><label for="placeName">Place:</label><input type="text" name="name" required> </p>
+<p><label for="placeDescription">Description:</label><input type="text" name="description"></p>
 
 <fieldset>
     <legend for="activities">Activities:</legend>
 	{% for listActivity in page.activities %}
 		<li><input type="checkbox" value="{{ listActivity.name }}" name="activity"><label for="activity">{{ listActivity.name }}</label></li>
 	{% endfor %}
-<p><label for="newActivity">Add new activity</label><input type="text" name="newActivity"><input type="button" value="Add
-"></p>
+<p><label for="newActivity">Add new activity</label><input type="text" name="newActivity"><input type="button" value="Add"></p>
 </fieldset>
 
 <p><label for="county">County:</label><input type="text" name="county"> </p>
 
 <p><label for="latitude" for="longitude">GPS coordinates:</label><input type="text" name="latitude">, <input type="text" name="longitude"> or <input type="button" value="Use Current Location"></p>
 
-<p><input type="button" value="Submit"><input type="button" value="Clear"></p>
+<p><input type="submit" value="Submit"><input type="button" value="Clear"></p>
 
 </form>
 
