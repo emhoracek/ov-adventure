@@ -14,12 +14,18 @@ COLORS:
 
 body { background-color: #5C594D }
 
+
+
 header { border: 0.1em solid #333;
          background-image: url("../images/lrgImages/oglebaytrees.jpg");
          text-align: center;
 	 font-family: sans;
 	 color: #5C594D }
 h1 { margin: 1em } 
+.metanav { background-color: #67B5AB;
+	 padding: 1em;
+	 margin: 0; }
+
 
 nav { position: static;
       background-color: #67B5AB;

@@ -1,4 +1,4 @@
-from flask import render_template, g
+from flask import render_template, g, request, session, flash, redirect, url_for
 from app import app, pages, dbqueries, placeList
 import os, math
 
@@ -33,9 +33,38 @@ def activity(activity=None):
           page=thisPage,
           places=thisPage['places'])
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    thisPage = pages.frontPage()
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != app.config['USERNAME']:
+            error = 'Invalid username'
+        elif request.form['password'] != app.config['PASSWORD']:
+            error = 'Invalid password'
+        else:
+            session['logged_in'] = True
+            flash('You were logged in')
+            return redirect(url_for('index'))
+    return render_template('login.html', error=error,
+                           page=thisPage)
+
 @app.route('/add')
 def addPlace():
   thisPage = pages.frontPage()
   return render_template('add.html',
             page=thisPage )
-				
+
+@app.route('/new', methods=['POST'])
+def add_entry():
+    if not session.get('logged_in'):
+        abort(401)
+    flash('New entry was successfully posted')
+    return redirect(url_for('index'))
+
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You were logged out')
+    return redirect(url_for('index'))		
