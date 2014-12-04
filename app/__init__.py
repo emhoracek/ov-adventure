@@ -1,6 +1,6 @@
 
 from sqlite3 import dbapi2 as sqlite3
-from flask import Flask, g
+from flask import Flask, g, request
 from contextlib import closing
 
 app = Flask(__name__)
@@ -14,7 +14,6 @@ app.config.update(dict(
 	PASSWORD='default'
 ))
 app.config.from_envvar('ADVENTURE_SETTINGS', silent=True)
-
 
 def connect_db():
 	return sqlite3.connect(app.config['DATABASE'])
@@ -33,10 +32,9 @@ def before_request():
 
 @app.teardown_request
 def teardown_request(exception):
-	db = getattr(g, 'db', None)
-	if db is not None:
-		db.close()
-
+  db = getattr(g, 'db', None)
+  if db is not None:
+    db.close()
 
 from app import views
 
