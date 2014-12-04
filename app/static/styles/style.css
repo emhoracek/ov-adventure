@@ -21,11 +21,11 @@ header { border: 0.1em solid #333;
 	 color: #5C594D }
 h1 { margin: 1em } 
 
-#activitiesList { position: static;
-		  background-color: #67B5AB;
-		  width: 100%;
-		  overflow: auto }
-#activitiesList ul { float: left;
+nav { position: static;
+      background-color: #67B5AB;
+      width: 100%;
+      overflow: auto }
+nav ul { float: left;
 		     padding: 1em }
 .activity { display: block;
 	    float: left;
@@ -37,6 +37,21 @@ h1 { margin: 1em }
 	    background-color: #DEDDC5  }
 nav a { color: #2E2C26;
 	text-decoration: none }
+
+
+.addForm { position: static;
+           clear: both;
+           background-color: #DEDDC5;
+           margin: 0;
+           margin-bottom: 1em;
+           padding: 1em }
+.activitiesForm { border: 1px solid black;
+		  padding: 1em }
+.activitiesForm .activity { background-color: #67B5AB  }
+.activitiesForm a { color: #2E2C26;
+		    text-decoration: none }
+.activitiesForm p { clear: both }
+
 
 
 #directory { position: static; 
@@ -68,6 +83,7 @@ nav a { color: #2E2C26;
 #directory a:hover { color: #67B5AB }
 #directory a:active { color: #67B5AB }
 
+
 #map { position: static;
        width: 40em;
        height: 40em;
@@ -92,21 +108,27 @@ header { position: static;
 	 min-height: 7em;
          border-radius: 1em; }
 
-#activitiesList { position: fixed;
-		  right: 1em;
-		  top: 1em;
-		  bottom: 32em;
-		  width: 30em;
-		  overflow: auto;
-		  height: calc(100vh - 34em);
-		  min-height: 7em;
-    	          border-bottom-left-radius: 1em }
-
+nav { position: fixed;
+      right: 1em;
+      top: 1em;
+      bottom: 32em;
+      width: 30em;
+      overflow: auto;
+      height: calc(100vh - 34em);
+      min-height: 7em; 
+      border-bottom-left-radius: 1em }
 #map { position: fixed;
        right: 1em;
        bottom: 1em;
        margin: 0;
        border-radius: 1em }
+
+.addForm { position: static;
+           margin-top: 1em;
+           margin-left: 1em;
+           margin-right: 32em;
+           border-top-right-radius: 1em }
+
 
 #directory { position: static;
 	     margin-top: 1em;

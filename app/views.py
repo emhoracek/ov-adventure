@@ -33,5 +33,9 @@ def activity(activity=None):
           page=thisPage,
           places=thisPage['places'])
 
-
+@app.route('/add')
+def addPlace():
+  thisPage = pages.frontPage()
+  return render_template('add.html',
+            page=thisPage )
 				
