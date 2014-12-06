@@ -14,14 +14,11 @@ COLORS:
 
 body { background-color: #5C594D }
 
-
-
-header { border: 0.1em solid #333;
-         background-image: url("../images/lrgImages/oglebaytrees.jpg");
+header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
          text-align: center;
-	 font-family: sans;
-	 color: #5C594D }
-h1 { margin: 1em } 
+	       font-family: sans;
+      	 color: #5C594D }
+h1 { } 
 .metanav { background-color: #67B5AB;
 	 padding: 1em;
 	 margin: 0; }
@@ -92,11 +89,11 @@ nav a { color: #2E2C26;
 
 #map { position: static;
        width: 40em;
-       height: 40em;
+       height: 38em;
        margin: auto;
        /*background-color: green;
        background-image: url("../images/ohiovalleymap.png");*/
-       border: 1px solid darkBlue }
+       /*border: 1px solid darkBlue*/ }
 
 footer { background-color: #67B5AB;
 	 padding: 1em;
@@ -107,39 +104,39 @@ footer { background-color: #67B5AB;
 @media all and (min-width: 65em) and (min-height: 40em) {
 
 header { position: static;
-	 margin-left: 1em;
-	 margin-right: 32em;
-	 margin-top: 1em;
-	 height: calc(100vh - 34em);
-	 min-height: 7em;
+       	 margin-left: 2em;
+      	 margin-right: 34em;
+      	 margin-top: 2em;
+      	 height: calc(100vh - 34em);
+      	 min-height: 7em;
          border-radius: 1em; }
 
 nav { position: fixed;
-      right: 1em;
-      top: 1em;
-      bottom: 32em;
+      right: 2em;
+      top: 2em;
+      bottom: 34em;
       width: 30em;
       overflow: auto;
       height: calc(100vh - 34em);
       min-height: 7em; 
       border-bottom-left-radius: 1em }
 #map { position: fixed;
-       right: 1em;
-       bottom: 1em;
+       right: 2em;
+       bottom: 2em;
        margin: 0;
        border-radius: 1em }
 
 .addForm { position: static;
-           margin-top: 1em;
-           margin-left: 1em;
-           margin-right: 32em;
+           margin-top: 2em;
+           margin-left: 2em;
+           margin-right: 34em;
            border-top-right-radius: 1em }
 
 
 #directory { position: static;
-	     margin-top: 1em;
-	     margin-left: 1em;
-	     margin-right: 32em;
+	     margin-top: 2em;
+	     margin-left: 2em;
+	     margin-right: 34em;
 	     border-top-right-radius: 1em }
 #directory form { width: 25em;
 		  padding-top: 1em;
