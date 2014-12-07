@@ -108,7 +108,7 @@ header { position: static;
       	 height: calc(100vh - 34em);
       	 min-height: 7em;
          border-radius: 1em;
-         box-shadow: 0.25em 0.5em 0.25em 0.1em #333 }
+         box-shadow: 0em 0.5em 0.25em 0.1em #333 }
 
 nav { position: fixed;
       right: 2em;
@@ -119,14 +119,14 @@ nav { position: fixed;
       height: calc(100vh - 34em);
       min-height: 7em; 
       border-bottom-left-radius: 1em;
-      box-shadow: 0.25em 0.5em 0.3em 0.2em #333 }
+      box-shadow: 0em 0.5em 0.3em 0.2em #333 }
 
 #map { position: fixed;
        right: 2em;
        bottom: 2em;
        margin: 0;
        border-radius: 1em;
-       box-shadow: 0.25em 0.5em 0.25em 0.1em #333 }
+       box-shadow: 0em 0.5em 0.25em 0.1em #333 }
 
 .addForm { position: static;
            margin-top: 2em;
@@ -144,14 +144,14 @@ nav { position: fixed;
 		  padding-top: 1em;
 		  padding-left: 1em;
 		  border-radius: 0.5em 0.5em 0 0;
-		  box-shadow: 0.25em 0.5em 0.5em 0.25em #333 }
+		  box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
 .list { margin: 0;
 	   margin-bottom: 1em;
 	   padding: 1em 2em;
 	   border-radius: 0 1em 0em 0;
 	   background-color: #DEDDC5;
-	   box-shadow: 0.5em 0.25em 0.25em #333 }
+	   box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
 } /* end larger screens */
 
@@ -163,5 +163,4 @@ nav { position: fixed;
 #map { display: none }
 
 }/* end shorter screens */
-
 
