@@ -42,12 +42,11 @@ nav a { color: #2E2C26;
 	text-decoration: none }
 
 
-.addForm { position: static;
-           clear: both;
-           background-color: #DEDDC5;
-           margin: 0;
-           margin-bottom: 1em;
-           padding: 1em }
+.add { position: static;
+       clear: both;
+       background-color: #DEDDC5;
+       margin: 0;
+       padding: 1em }
 .activitiesForm { border: 1px solid black;
 		  padding: 1em }
 .activitiesForm .activity { background-color: #67B5AB  }
@@ -55,16 +54,30 @@ nav a { color: #2E2C26;
 		    text-decoration: none }
 .activitiesForm p { clear: both }
 
-#directory { position: static; 
-	     clear: both /* this keeps the activityList from intruding in cramped situations. */  }
-#directory form { position: static;
+.main { position: static; 
+	      clear: both; /* this keeps the activityList from intruding in cramped situations. */
+        margin-bottom: 2em }
+
+.place { background-color: #DEDDC5;
+         padding: 1em }
+.carousel { border: 1px solid black;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 1em; margin-top: 1em }
+.carousel img { width: 30%;
+                height: 10em }
+.place p { clear: both }
+
+.directory { box-shadow: none }
+
+.directory form { position: static;
 		  background-color: #DEDDC5;
 		  margin: 0;
 		  padding-top: 1em;
 		  padding-left: 1em }	     
 .list { display: block;
 	   text-indent: 0; 
-           list-style-type: none; 
+     list-style-type: none; 
 	   margin: 0;
 	   padding: 1em 2em;
 	   background-color: #DEDDC5 }
@@ -128,19 +141,15 @@ nav { position: fixed;
        border-radius: 1em;
        box-shadow: 0em 0.5em 0.25em 0.1em #333 }
 
-.addForm { position: static;
-           margin-top: 2em;
-           margin-left: 2em;
-           margin-right: 34em;
-           border-top-right-radius: 1em }
+.main { position: static;
+        margin-top: 2em;
+        margin-left: 2em;
+        margin-right: 34em;
+        border-top-right-radius: 1em;
+        box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
-
-#directory { position: static;
-	     margin-top: 2em;
-	     margin-left: 2em;
-	     margin-right: 34em;
-	     border-top-right-radius: 1em }
-#directory form { width: 25em;
+.directory { box-shadow: none }
+.directory form { width: 25em;
 		  padding-top: 1em;
 		  padding-left: 1em;
 		  border-radius: 0.5em 0.5em 0 0;

@@ -22,36 +22,31 @@
 
 {% block main %}
 
-	<div class="main directory">
+	<div class="main place">
+		
+		<h1>Name of place</h1>
 
-	<form>
-	<label>Search: </label><input type="text">
-	</form>
+		<div class="carousel">
+			<img src="urlfor static place-thumb1.png">
+			<img src="urlfor static place-thumb2.png">
+			<img src="urlfor static place-thumb3.png">
+		</div>
 
-	<ul class="list">
-	{% for place in places %}
-	<li><a href="{{ url_for( '.places', place=place.name ) }}"
-		    class="name">
-		    {{ place.name }}</a> 
-	    <span class="description">{{ place.description }}</span>
-	    <span class="area">{{ place.area }}</span></li>	
-	{% else %} 
-	<p>No matches.</p>
-	{% endfor %}
+		<p>A short description of the place.</p>
 
-	<p class="numbers">
-	{% if page.hasPages %}
-	{% for _ in (range (page.numPages|int)) %}
-	{% if loop.index == page.page %}
-		{{loop.index}}
-	{% else %}
-		<a href="/page/{{ loop.index }}">{{loop.index}}</a> </li>
-	{% endif %}
-	{% endfor %}
-	{% endif %}
-	</p>
+		<ul class="activitiesInPlace">
+		{% for listActivity in page.activities %}
+			<li class="activity"><a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
+		{% endfor %}
+		</ul>
+
+		<p>Website</p>
+		
+		<p>Contact info</p>
 
 	</div>
+
+
 {% endblock main %}
 
 {% block script %}
