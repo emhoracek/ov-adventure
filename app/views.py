@@ -21,9 +21,10 @@ def page(page=1):
 @app.route('/places')
 @app.route('/places/<place>')
 def places(place=None):
-  thisPage = pages.frontPage()
+  thisPage = pages.frontPage('Place',None,1)
   return render_template('place.html',
-          page=thisPage )
+			       page=thisPage,
+             places=thisPage['places'])
 
 @app.route('/activities')
 @app.route('/activities/<activity>')
