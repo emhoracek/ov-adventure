@@ -8,7 +8,7 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-query_activities = ('select places.name, places.description, areas.name ' +
+query_activities = ('select places.name, places.description, counties.name ' +
 		   'FROM places JOIN ? as "a" ' +
 		   'ON places.id = a.placeId ' +
 		   'order by places.name')
@@ -18,15 +18,15 @@ def get_activities_list():
 	return [dict(name=row[0]) for row in cur]
 
 full_query = ('select places.name, places.description, ' +
-	      'areas.name, places.latitude, places.longitude ' +
-	      'FROM places JOIN areas ' +
-	      'ON places.areaId = areas.id '
+	      'counties.name, places.latitude, places.longitude ' +
+	      'FROM places JOIN counties ' +
+	      'ON places.countyId = counties.id '
 	      'order by places.name')
 
 
-query_join = (' select places.name, places.description, areas.name, '+
+query_join = (' select places.name, places.description, counties.name, '+
 	      ' places.latitude, places.longitude ' +
-	      ' FROM places, areas JOIN joinActPlace, activities ' +
+	      ' FROM places, counties JOIN joinActPlace, activities ' +
 	      ' ON places.id = joinActPlace.placeId AND ' +
 	      ' activities.id = joinActPlace.activityId ' +  
-	      ' where activities.name = ? AND areas.id = places.areaId')
+	      ' where activities.name = ? AND counties.id = .countyId')

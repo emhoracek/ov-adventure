@@ -3,16 +3,17 @@ create table places (
 	id integer primary key not null,
 	name text not null,
 	description text not null,
-	areaId integer not null,
+	countyID integer not null,
 	latitude real not null,
 	longitude real not null,
-	FOREIGN KEY(areaId) REFERENCES areas(id) 
+	FOREIGN KEY(countyId) REFERENCES counties(id) 
 );
 
-drop table if exists areas;
-create table areas (
+drop table if exists counties;
+create table counties (
 	id integer primary key,
-	name text not null
+	name text not null,
+        state text not null
 );
 
 drop table if exists activities;

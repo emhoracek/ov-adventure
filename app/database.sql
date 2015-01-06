@@ -1,77 +1,78 @@
-INSERT INTO places VALUES(1, 'Wheeling Park', 'A city park.', 1002, 40.0580813,-80.6671525);
-INSERT INTO places VALUES(2, 'Schenley Pond', 'Paddle boats at Oglebay', 1001, 40.0977693,-80.6630598);
-INSERT INTO places VALUES(3, 'Ski Slopes', 'Skiing at Oglebay', 1001, 40.0953621,-80.660224);
+INSERT INTO places VALUES(1, 'Wheeling Park', 'A city park.', 1, 40.0580813,-80.6671525);
+INSERT INTO places VALUES(2, 'Schenley Pond', 'Paddle boats at Oglebay', 2, 40.0977693,-80.6630598);
+INSERT INTO places VALUES(3, 'Ski Slopes', 'Skiing at Oglebay', 3, 40.0953621,-80.660224);
 INSERT INTO places VALUES (
 	4,
 	'Good Zoo',
 	'Zoo and nature center', 
-	1001, 
+	4, 
 	40.0914825,-80.6635319);
 INSERT INTO places VALUES (
 	5,
 	'Wheeling Park pond',
 	'Lots of birds.', 
-	1002, 
+	4, 
 	40.0590549,-80.6696798);
 INSERT INTO places VALUES (
 	6,
 	'Wheeling park ice skating',
 	"It's almost outdoors.", 
-	1002, 
+	1, 
 	40.0586479,-80.6668156);
 INSERT INTO places VALUES (
 	7,
 	'Wheeling overlook',
 	'Description of place', 
-	1004, 
+	10, 
 	40.0799724,-80.7225178);
 INSERT INTO places VALUES (
 	8,
 	'Waterfront Park',
 	'Description of place', 
-	1003, 
+	7, 
 	40.0672014,-80.724915);
 INSERT INTO places VALUES (
-	9, 'Tunnel Green', 'Shelters, roller hockey rink, baseball field, and basketball courts.', 1004, 40.071452,-80.710526);
+	9, 
+        'Tunnel Green', 
+        'Shelters, roller hockey rink, baseball field, basketball courts.',
+        7, 
+        40.071452,-80.710526);
 INSERT INTO places VALUES (
-	10, "Lewis Wetzel's cave", "A cave near Tunnel Green", 1005, 40.0727302,-80.71052);
+        10, 
+        "Lewis Wetzel's cave", 
+        "A cave near Tunnel Green", 
+        7, 
+        40.0727302,-80.71052);
 INSERT INTO places VALUES (
 	11,
 	'Good Zoo',
 	'Zoo and nature center', 
-	1001, 
+	1, 
 	40.0814825,-80.5635319);
 INSERT INTO places VALUES (
 	12,
 	'Wheeling Park pond',
 	'Lots of birds.', 
-	1002, 
+	1, 
 	40.0790549,-80.6196798);
 INSERT INTO places VALUES (
 	13,
 	'Good Zoo',
 	'Zoo and nature center', 
-	1001, 
+	7, 
 	40.0914825,-80.6335319);
 INSERT INTO places VALUES (
 	14,
 	'Wheeling Park pond',
 	'Lots of birds.', 
-	1002, 
+	2, 
 	40.0290549,-80.6896798);
 INSERT INTO places VALUES (
 	15,
 	'Wheeling park ice skating',
 	'Almost outdoors.', 
-	1002, 
+	1, 
 	40.0886479,-80.6968156);
-
-
-INSERT INTO areas VALUES(1001, 'Oglebay');
-INSERT INTO areas VALUES(1002, 'Wheeling Park');
-INSERT INTO areas VALUES(1003, 'Heritage trail');
-INSERT INTO areas VALUES(1004, 'Smaller city parks');
-INSERT INTO areas VALUES(1005, 'Other public land');
 
 INSERT INTO activities VALUES(1, 'bicycle trails');
 INSERT INTO activities VALUES(2, 'boating');
