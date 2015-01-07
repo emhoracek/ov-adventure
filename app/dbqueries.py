@@ -9,9 +9,9 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 
 query_activities = ('select places.name, places.description, counties.name ' +
-		   'FROM places JOIN ? as "a" ' +
-		   'ON places.id = a.placeId ' +
-		   'order by places.name')
+		    'FROM places JOIN ? as "a" ' +
+		    'ON places.id = a.placeId ' +
+		    'order by places.name')
 
 def get_activities_list():
 	cur = query_db('select name from activities order by name')
@@ -29,4 +29,4 @@ query_join = (' select places.name, places.description, counties.name, '+
 	      ' FROM places, counties JOIN joinActPlace, activities ' +
 	      ' ON places.id = joinActPlace.placeId AND ' +
 	      ' activities.id = joinActPlace.activityId ' +  
-	      ' where activities.name = ? AND counties.id = .countyId')
+	      ' where activities.name = ? AND counties.id = places.countyId')

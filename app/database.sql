@@ -1,6 +1,21 @@
-INSERT INTO places VALUES(1, 'Wheeling Park', 'A city park.', 1, 40.0580813,-80.6671525);
-INSERT INTO places VALUES(2, 'Schenley Pond', 'Paddle boats at Oglebay', 2, 40.0977693,-80.6630598);
-INSERT INTO places VALUES(3, 'Ski Slopes', 'Skiing at Oglebay', 3, 40.0953621,-80.660224);
+INSERT INTO places VALUES(
+    1, 
+    'Wheeling Park', 
+    'A city park.', 
+    1, 
+    40.0580813,-80.6671525);
+INSERT INTO places VALUES(
+    2, 
+    'Schenley Pond', 
+    'Paddle boats at Oglebay',
+    2, 
+    40.0977693,-80.6630598);
+INSERT INTO places VALUES(
+    3, 
+    'Ski Slopes', 
+    'Skiing at Oglebay', 
+    3, 
+    40.0953621,-80.660224);
 INSERT INTO places VALUES (
 	4,
 	'Good Zoo',

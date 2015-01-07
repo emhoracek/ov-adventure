@@ -24,6 +24,8 @@ def init_db():
 			db.cursor().executescript(f.read())
 		with app.open_resource('database.sql', mode='r') as l:
 			db.cursor().executescript(l.read())
+                with app.open_resource('counties.sql', mode='r') as c:
+                        db.cursor().executescript(c.read())
 		db.commit()
 
 @app.before_request

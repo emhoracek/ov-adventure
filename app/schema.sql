@@ -3,7 +3,7 @@ create table places (
 	id integer primary key not null,
 	name text not null,
 	description text not null,
-	countyID integer not null,
+	countyId integer not null,
 	latitude real not null,
 	longitude real not null,
 	FOREIGN KEY(countyId) REFERENCES counties(id) 
