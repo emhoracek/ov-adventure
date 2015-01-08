@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
 {% block nav %}
+	<nav id="lists">
 
-	<nav id="activitiesList">
-
-	<ul>
+        <ul class="navnav">
+            <li>Activities</li>
+            <li>Counties</li>
+        </ul>
+	
+        <ul id="activitiesList">
 	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
 	{% for listActivity in page.activities %}
 		{% if listActivity==activity %}
@@ -16,6 +20,16 @@
 		<li class="activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
 
 	</ul>
+
+        <ul id="countiesList">
+        {% for listCounty in page.counties %}
+            {% if listCounty==county %}
+            <li class="county selected">
+            {% else %}
+            <li class="county">
+            {% endif %}<a href="{{ url_for('county', county=listCounty.name) }}">{{ listCounty.name }}</a></li>
+        {% endfor %}
+                <li class="county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
 
 	</nav>	
 {% endblock nav %}

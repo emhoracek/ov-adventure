@@ -29,8 +29,10 @@ nav { position: static;
       width: 100%;
       overflow: auto }
 nav ul { float: left;
-		     padding: 1em }
-.activity { display: block;
+	 padding: 1em }
+.navnav { list-style-type: none }
+.navnav li { display: inline } 
+.activity, .county { display: block;
 	    float: left;
             text-decoration: none;
 	    text-indent: 0;

@@ -17,6 +17,10 @@ def get_activities_list():
 	cur = query_db('select name from activities order by name')
 	return [dict(name=row[0]) for row in cur]
 
+def get_counties_list():
+        cur = query_db('select name from counties order by name')
+        return [dict(name=row[0]) for row in cur]
+
 full_query = ('select places.name, places.description, ' +
 	      'counties.name, places.latitude, places.longitude ' +
 	      'FROM places JOIN counties ' +
@@ -30,3 +34,12 @@ query_join = (' select places.name, places.description, counties.name, '+
 	      ' ON places.id = joinActPlace.placeId AND ' +
 	      ' activities.id = joinActPlace.activityId ' +  
 	      ' where activities.name = ? AND counties.id = places.countyId')
+
+county_query = ('select places.name, places.description, ' +
+	      'counties.name, places.latitude, places.longitude ' +
+	      'FROM places JOIN counties ' +
+	      'ON places.countyId = counties.id ' +
+              'where counties.name = ? ' +
+	      'order by places.name')
+
+

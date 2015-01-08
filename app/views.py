@@ -5,7 +5,7 @@ import os, math
 @app.route('/')
 @app.route('/index')
 def index():
-  thisPage = pages.frontPage('Home',None,1)
+  thisPage = pages.frontPage('Home', None, None, 1)
   return render_template('index.html',
           page=thisPage,
           places=thisPage['places'])
@@ -13,7 +13,7 @@ def index():
 @app.route('/page')
 @app.route('/page/<int:page>')
 def page(page=1):
-  thisPage = pages.frontPage('Page %s '% page, None, page)
+  thisPage = pages.frontPage('Page %s '% page, None, None, page)
   return render_template('index.html',
           page=thisPage,
           places=thisPage['places'])			        
@@ -21,7 +21,7 @@ def page(page=1):
 @app.route('/places')
 @app.route('/places/<place>')
 def places(place=None):
-  thisPage = pages.frontPage('Place',None,1)
+  thisPage = pages.frontPage('Place',None, None,1)
   return render_template('place.html',
 			       page=thisPage,
              places=thisPage['places'])
@@ -29,10 +29,18 @@ def places(place=None):
 @app.route('/activities')
 @app.route('/activities/<activity>')
 def activity(activity=None):
-  thisPage = pages.frontPage(activity, activity, 1)
+  thisPage = pages.frontPage(activity, activity, None, 1)
   return render_template('index.html',
           page=thisPage,
           places=thisPage['places'])
+
+@app.route('/counties')
+@app.route('/counties/<county>')
+def county(county=None):
+    thisPage = pages.frontPage(county, None, county, 1)
+    return render_template('index.html',
+                           page=thisPage,
+                           places=thisPage['places'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
