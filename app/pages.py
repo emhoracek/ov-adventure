@@ -24,6 +24,10 @@ def frontPage (title='Home', activity=None, county=None, page=1):
              hasPages= hasPages,
              places= places, 
              mapCenter= placesList.get_average_latlong(places))
+
+# what is this for??
+def placePage (place = None):
+    cur = dbqueries.full_query
     
 def getPlaceList (activity, county):
     if (activity == None and county == None):

@@ -1,5 +1,5 @@
 from flask import render_template, g, request, session, flash, redirect, url_for, abort
-from app import app, pages, dbqueries, dbinserts, placeList
+from app import app, pages, dbqueries, dbinserts, placeList, users
 import os, math
 
 @app.route('/')
@@ -21,10 +21,9 @@ def page(page=1):
 @app.route('/places')
 @app.route('/places/<place>')
 def places(place=None):
-  thisPage = pages.frontPage('Place',None, None,1)
+  thisPage = pages.placePage(place)
   return render_template('place.html',
-			       page=thisPage,
-             places=thisPage['places'])
+			  page=thisPage)
 
 @app.route('/activities')
 @app.route('/activities/<activity>')
@@ -47,9 +46,12 @@ def login():
     thisPage = pages.frontPage()
     error = None
     if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME']:
+        db_user = dbqueries.query_db(
+            "select username, password FROM users WHERE username = ?", (request.form['username'],), True)
+        admin_user = users.User("admin", db_user[1])
+        if request.form['username'] != "admin":
             error = 'Invalid username'
-        elif request.form['password'] != app.config['PASSWORD']:
+        elif admin_user.check_password(request.form['password']):
             error = 'Invalid password'
         else:
             session['logged_in'] = True

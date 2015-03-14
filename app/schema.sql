@@ -1,3 +1,9 @@
+drop table if exists users;
+create table users (
+    username string not null,
+    password string not null
+);
+
 drop table if exists places;
 create table places (
 	id integer primary key not null,
@@ -6,6 +12,8 @@ create table places (
 	countyId integer not null,
 	latitude real not null,
 	longitude real not null,
+        website text,
+        contact text,
 	FOREIGN KEY(countyId) REFERENCES counties(id) 
 );
 
