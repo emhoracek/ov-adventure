@@ -1,0 +1,177 @@
+/*
+COLORS:
+	bright green: #6AAC70
+	bright blue: #67B5AB
+	super dark brown: #2E2C26
+	dark brown: #5C594D
+	light beige: #DEDDC5
+	lighter beige: #F2F1E8
+	light golden: #FDE8B3 
+	
+*/
+
+* { margin: 0; padding: 0 }
+
+body { background-color: #5C594D }
+
+header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
+         text-align: center;
+	       font-family: sans;
+      	 color: #5C594D }
+h1 { } 
+.metanav { background-color: #67B5AB;
+	 padding: 1em;
+	 margin: 0; }
+
+
+nav { position: static;
+      background-color: #67B5AB;
+      width: 100%;
+      overflow: auto }
+nav ul { float: left;
+	 padding: 1em }
+.navnav { list-style-type: none }
+.navnav li { display: inline } 
+.activity, .county { display: block;
+	    float: left;
+            text-decoration: none;
+	    text-indent: 0;
+	    padding: 0.5em;
+	    margin: 0.5em;
+            border-radius: 1em;
+	    background-color: #DEDDC5  }
+nav a { color: #2E2C26;
+	text-decoration: none }
+
+
+.add { position: static;
+       clear: both;
+       background-color: #DEDDC5;
+       margin: 0;
+       padding: 1em }
+.activitiesForm { border: 1px solid black;
+		  padding: 1em }
+.activitiesForm .activity { background-color: #67B5AB  }
+.activitiesForm a { color: #2E2C26;
+		    text-decoration: none }
+.activitiesForm p { clear: both }
+
+.main { position: static; 
+	      clear: both; /* this keeps the activityList from intruding in cramped situations. */
+        margin-bottom: 2em }
+
+.place { background-color: #DEDDC5;
+         padding: 1em }
+.carousel { border: 1px solid black;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 1em; margin-top: 1em }
+.carousel img { width: 30%;
+                height: 10em }
+.place p { clear: both }
+
+.directory { box-shadow: none }
+
+.directory form { position: static;
+		  background-color: #DEDDC5;
+		  margin: 0;
+		  padding-top: 1em;
+		  padding-left: 1em }	     
+.list { display: block;
+	   text-indent: 0; 
+     list-style-type: none; 
+	   margin: 0;
+	   padding: 1em 2em;
+	   background-color: #DEDDC5 }
+.list li { background-color: #F2F1E8;
+	   padding: 1em;
+	   margin: 0.5em 0em;
+	   border: 1px solid #5C594D }
+.name {}
+.description::before { content: " \2014 \00a0"}
+.description {}
+.description::after { content: " \2014 "}
+.area::before { content: " at " }
+.area {}
+.numbers { background-color: #DEDDC5 }
+#directory a { color:  #67B5AB }
+#directory a:visited { color:  #67B5AB }
+#directory a:hover { color: #67B5AB }
+#directory a:active { color: #67B5AB }
+
+
+#map { position: static;
+       width: 40em;
+       height: 38em;
+       margin: auto;
+       /*background-color: green;
+       background-image: url("../images/ohiovalleymap.png");*/
+       /*border: 1px solid darkBlue*/ }
+
+footer { background-color: #67B5AB;
+	 padding: 1em;
+	 margin: 0 }
+
+/* Large screens */
+
+@media all and (min-width: 65em) and (min-height: 40em) {
+
+header { position: static;
+       	 margin-left: 2em;
+      	 margin-right: 34em;
+      	 margin-top: 2em;
+      	 height: calc(100vh - 34em);
+      	 min-height: 7em;
+         border-radius: 1em;
+         box-shadow: 0em 0.5em 0.25em 0.1em #333 }
+
+nav { position: fixed;
+      right: 2em;
+      top: 2em;
+      bottom: 34em;
+      width: 30em;
+      overflow: auto;
+      height: calc(100vh - 34em);
+      min-height: 7em; 
+      border-bottom-left-radius: 1em;
+      box-shadow: 0em 0.5em 0.3em 0.2em #333 }
+
+#map { position: fixed;
+       right: 2em;
+       bottom: 2em;
+       margin: 0;
+       border-radius: 1em;
+       box-shadow: 0em 0.5em 0.25em 0.1em #333 }
+
+.main { position: static;
+        margin-top: 2em;
+        margin-left: 2em;
+        margin-right: 34em;
+        border-top-right-radius: 1em;
+        box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+
+.directory { box-shadow: none }
+.directory form { width: 25em;
+		  padding-top: 1em;
+		  padding-left: 1em;
+		  border-radius: 0.5em 0.5em 0 0;
+		  box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+
+.list { margin: 0;
+	   margin-bottom: 1em;
+	   padding: 1em 2em;
+	   border-radius: 0 1em 0em 0;
+	   background-color: #DEDDC5;
+	   box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+
+} /* end larger screens */
+
+
+/* shorter screens */
+/* shorter screens can't see both the map and the activity list on the left side. */
+@media all and (max-height: 40em) {
+
+#map { display: none }
+
+}/* end shorter screens */
+

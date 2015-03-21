@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% if title %}
+		<title> {{ page.title }} - Ohio Valley Adventure</title>
+		{% else %}
+		<title> Welcome to Ohio Valley Adventure </title>
+		{% endif %}
+		<link href={{ url_for( 'static', filename='styles/style.css') }} rel=stylesheet type="text/css">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		<!--{% if user %}
+			<link rel="stylesheet" href={{ url_for('static', filename='styles/loggedin.css') }} rel="stylesheet" type="text/css">
+		{% endif %}-->
+ 		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<style>
+			{% if activity %}
+			header { background: url({{ url_for( 'static', filename='images/' + activity + '.jpg' ) }}) }
+			{% endif %}
+		</style>
+	</head>
+<body>
+	<header>
+
+  {% if session.logged_in %}
+  <div class=metanav>
+    Hello, Jesse. <a href="{{ url_for('add') }}">Add new place.</a>
+    <a href="{{ url_for('logout') }}">log out</a>
+  </div>
+  {% endif %}
+	
+
+  {% for message in get_flashed_messages() %}
+    <span class=flash>{{ message }}</span>
+  {% endfor %}
+
+
+	<h1>Ohio Valley Adventure: {{ page.title }} </h1>
+
+	</header>
+
+	<div id="map">
+
+	</div>
+
+	{% block nav %} {% endblock %}
+	
+	{% block main %} {% endblock main %}
+
+	<footer>
+	
+	<p>All data (c) Jesse Mestrovic. 
+
+	   Design by <a href="http://www.daydrea.me">daydrea.me</a>
+
+	   {% if not session.logged_in %}
+	   <a href="{{ url_for('login') }}">log in</a></p>
+	   {% endif %}
+
+	</footer>
+
+	{% block script %} {% endblock %}
+
+</body>
+
+</html>

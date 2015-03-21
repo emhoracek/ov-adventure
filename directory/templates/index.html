@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block nav %}
+	<nav id="lists">
+
+        <ul class="navnav">
+            <li>Activities</li>
+            <li>Counties</li>
+        </ul>
+	
+        <ul id="activitiesList">
+	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
+	{% for listActivity in page.activities %}
+		{% if listActivity==activity %}
+		<li class="activity selected">
+		{% else %}
+		<li class="activity">
+		{% endif %}<a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
+	{% endfor %}
+		<li class="activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+
+	</ul>
+
+        <ul id="countiesList">
+        {% for listCounty in page.counties %}
+            {% if listCounty==county %}
+            <li class="county selected">
+            {% else %}
+            <li class="county">
+            {% endif %}<a href="{{ url_for('county', county=listCounty.name) }}">{{ listCounty.name }}</a></li>
+        {% endfor %}
+                <li class="county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
+
+	</nav>	
+{% endblock nav %}
+
+{% block main %}
+
+	<div class="main directory">
+
+	<form>
+	<label>Search: </label><input type="text">
+	</form>
+
+	<ul class="list">
+	{% for place in places %}
+	<li><a href="{{ url_for( '.places', place=place.name ) }}"
+		    class="name">
+		    {{ place.name }}</a> 
+	    <span class="description">{{ place.description }}</span>
+	    <span class="area">{{ place.area }}</span></li>	
+	{% else %} 
+	<p>No matches.</p>
+	{% endfor %}
+
+	<p class="numbers">
+	{% if page.hasPages %}
+	{% for _ in (range (page.numPages|int)) %}
+	{% if loop.index == page.page %}
+		{{loop.index}}
+	{% else %}
+		<a href="/page/{{ loop.index }}">{{loop.index}}</a> </li>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+	</p>
+
+	</div>
+{% endblock main %}
+
+{% block script %}
+	<script>
+		var map = L.map('map').setView([{{ page.mapCenter.latitude }}, {{ page.mapCenter.longitude }}], 12);
+
+		/*map.locate({setView: true, maxZoom: 16});*/
+
+		L.tileLayer('http://localhost/osm/{z}/{x}/{y}.png', {
+    			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+			maxZoom: 18
+		}).addTo(map);
+
+		function onLocationFound(e) {
+		    var radius = e.accuracy / 2;
+
+		    L.marker(e.latlng).addTo(map)
+		        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+		    L.circle(e.latlng, radius).addTo(map);
+		}
+
+		map.on('locationfound', onLocationFound);
+	
+		function onLocationError(e) {
+		    alert(e.message);
+		}
+
+		map.on('locationerror', onLocationError);
+
+		{% for place in places %} 
+		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map);
+		{% endfor %}
+
+	</script>
+{% endblock script %}
