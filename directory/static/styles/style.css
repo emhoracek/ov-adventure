@@ -31,6 +31,7 @@ h1 { }
 #tags ul { float: left; padding-left: 1em; padding-right: 1em }
 .tags_nav { list-style-type: none }
 .tags_nav li { display: inline } 
+.tags_heading { margin-top: 1em; margin-left: 1em; font-size: 1em }
 .tags_activity, .tags_county { display: block;
 	    float: left;
             text-decoration: none;
@@ -41,6 +42,7 @@ h1 { }
 	    margin: 0.1em;
             border-radius: 1em;
 	    background-color: #DEDDC5  }
+#tags .selected { border: 0.1em solid #5C594D; margin: 0 }
 #tags a { color: #2E2C26;
 	text-decoration: none }
 
@@ -60,6 +62,7 @@ h1 { }
 	      clear: both; /* this keeps the activityList from intruding in cramped situations. */
         margin-bottom: 2em }
 
+/* The main section on the place page. */
 .place { background-color: #DEDDC5;
          padding: 1em }
 .carousel { border: 1px solid black;
@@ -70,8 +73,8 @@ h1 { }
                 height: 10em }
 .place p { clear: both }
 
+/* The main section on the directory page. */
 .directory { box-shadow: none }
-
 .directory_search { position: static;
 		  background-color: #DEDDC5;
 		  margin: 0;
@@ -98,7 +101,6 @@ h1 { }
 .directory a:visited { color:  #67B5AB }
 .directory a:hover { color: #67B5AB }
 .directory a:active { color: #67B5AB }
-
 
 #map { position: static;
        width: 40em;

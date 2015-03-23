@@ -19,6 +19,8 @@ def frontPage (title='Home', activity=None, county=None, page=1):
     return dict(title= title,
              activities= dbqueries.get_activities_list(),
              counties = dbqueries.get_counties_list(),
+             activity = activity,
+             county = county,
              page= page,
              numPlaces= numPlaces,
              numPages= numPages,
