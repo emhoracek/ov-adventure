@@ -1,59 +1,59 @@
 {% extends "base.html" %}
 
 {% block nav %}
-	<nav id="lists">
+	<nav id="tags">
 
-        <ul class="navnav">
+        <ul class="tags_nav">
             <li>Activities</li>
             <li>Counties</li>
         </ul>
 	
-        <ul id="activitiesList">
+        <ul id="tags_activities">
 	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
 	{% for listActivity in page.activities %}
 		{% if listActivity==activity %}
-		<li class="activity selected">
+		<li class="tags_activity selected">
 		{% else %}
-		<li class="activity">
+		<li class="tags_activity">
 		{% endif %}<a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
 	{% endfor %}
-		<li class="activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+		<li class="tags_activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
 
 	</ul>
 
-        <ul id="countiesList">
+        <ul id="tags_counties">
         {% for listCounty in page.counties %}
             {% if listCounty==county %}
-            <li class="county selected">
+            <li class="tags_county selected">
             {% else %}
-            <li class="county">
+            <li class="tags_county">
             {% endif %}<a href="{{ url_for('county', county=listCounty.name) }}">{{ listCounty.name }}</a></li>
         {% endfor %}
-                <li class="county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
+                <li class="tags_county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
 
 	</nav>	
 {% endblock nav %}
 
 {% block main %}
 
-	<div class="main directory">
+	<div class="directory">
 
-	<form>
+	<form class="directory_search">
 	<label>Search: </label><input type="text">
 	</form>
 
-	<ul class="list">
+	<ul class="directory_list">
 	{% for place in places %}
-	<li><a href="{{ url_for( '.places', place=place.name ) }}"
-		    class="name">
+	<li class="directory_card"><a href="{{ url_for( '.places', place=place.name ) }}" class="card_name">
 		    {{ place.name }}</a> 
-	    <span class="description">{{ place.description }}</span>
-	    <span class="area">{{ place.area }}</span></li>	
+	    <span class="card_description">{{ place.description }}</span>
+	    <span class="card_area">{{ place.area }}</span>
+        </li>	
 	{% else %} 
 	<p>No matches.</p>
 	{% endfor %}
 
-	<p class="numbers">
+	<p class="directory_numbers">
 	{% if page.hasPages %}
 	{% for _ in (range (page.numPages|int)) %}
 	{% if loop.index == page.page %}

@@ -19,30 +19,30 @@ header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
 	       font-family: sans;
       	 color: #5C594D }
 h1 { } 
-.metanav { background-color: #67B5AB;
+.header_metanav { background-color: #67B5AB;
 	 padding: 1em;
 	 margin: 0; }
 
-
-nav { position: static;
+/* The box of tags that the user can select to filter the database */
+#tags { position: static;
       background-color: #67B5AB;
       width: 100%;
       overflow: auto }
-nav ul { float: left;
-	 padding: 1em }
-.navnav { list-style-type: none }
-.navnav li { display: inline } 
-.activity, .county { display: block;
+#tags ul { float: left; padding-left: 1em; padding-right: 1em }
+.tags_nav { list-style-type: none }
+.tags_nav li { display: inline } 
+.tags_activity, .tags_county { display: block;
 	    float: left;
             text-decoration: none;
 	    text-indent: 0;
 	    padding: 0.5em;
-	    margin: 0.5em;
+            padding-top: 0.1em;
+            padding-bottom: 0.1em;
+	    margin: 0.1em;
             border-radius: 1em;
 	    background-color: #DEDDC5  }
-nav a { color: #2E2C26;
+#tags a { color: #2E2C26;
 	text-decoration: none }
-
 
 .add { position: static;
        clear: both;
@@ -72,32 +72,32 @@ nav a { color: #2E2C26;
 
 .directory { box-shadow: none }
 
-.directory form { position: static;
+.directory_search { position: static;
 		  background-color: #DEDDC5;
 		  margin: 0;
 		  padding-top: 1em;
 		  padding-left: 1em }	     
-.list { display: block;
+.directory_list { display: block;
 	   text-indent: 0; 
      list-style-type: none; 
 	   margin: 0;
 	   padding: 1em 2em;
 	   background-color: #DEDDC5 }
-.list li { background-color: #F2F1E8;
+.directory_card { background-color: #F2F1E8;
 	   padding: 1em;
 	   margin: 0.5em 0em;
 	   border: 1px solid #5C594D }
-.name {}
-.description::before { content: " \2014 \00a0"}
-.description {}
-.description::after { content: " \2014 "}
-.area::before { content: " at " }
-.area {}
-.numbers { background-color: #DEDDC5 }
-#directory a { color:  #67B5AB }
-#directory a:visited { color:  #67B5AB }
-#directory a:hover { color: #67B5AB }
-#directory a:active { color: #67B5AB }
+.card_name {}
+.card_description::before { content: " \2014 \00a0"}
+.card_description {}
+.card_description::after { content: " \2014 "}
+.card_area::before { content: " at " }
+.card_area {}
+.directory_numbers { background-color: #DEDDC5 }
+.directory a { color:  #67B5AB }
+.directory a:visited { color:  #67B5AB }
+.directory a:hover { color: #67B5AB }
+.directory a:active { color: #67B5AB }
 
 
 #map { position: static;
@@ -125,7 +125,7 @@ header { position: static;
          border-radius: 1em;
          box-shadow: 0em 0.5em 0.25em 0.1em #333 }
 
-nav { position: fixed;
+#tags { position: fixed;
       right: 2em;
       top: 2em;
       bottom: 34em;
@@ -143,7 +143,7 @@ nav { position: fixed;
        border-radius: 1em;
        box-shadow: 0em 0.5em 0.25em 0.1em #333 }
 
-.main { position: static;
+.directory { position: static;
         margin-top: 2em;
         margin-left: 2em;
         margin-right: 34em;
@@ -151,13 +151,13 @@ nav { position: fixed;
         box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
 .directory { box-shadow: none }
-.directory form { width: 25em;
+.directory_search { width: 25em;
 		  padding-top: 1em;
 		  padding-left: 1em;
 		  border-radius: 0.5em 0.5em 0 0;
 		  box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
-.list { margin: 0;
+.directory_list { margin: 0;
 	   margin-bottom: 1em;
 	   padding: 1em 2em;
 	   border-radius: 0 1em 0em 0;

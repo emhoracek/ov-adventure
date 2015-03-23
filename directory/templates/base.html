@@ -23,18 +23,16 @@
 <body>
 	<header>
 
-  {% if session.logged_in %}
-  <div class=metanav>
-    Hello, Jesse. <a href="{{ url_for('add') }}">Add new place.</a>
-    <a href="{{ url_for('logout') }}">log out</a>
-  </div>
-  {% endif %}
+        {% if session.logged_in %}
+        <div class="header_metanav">
+        Hello, Jesse. <a href="{{ url_for('add') }}">Add new place.</a>
+        <a href="{{ url_for('logout') }}">log out</a>
+        </div>
+        {% endif %}
 	
-
-  {% for message in get_flashed_messages() %}
-    <span class=flash>{{ message }}</span>
-  {% endfor %}
-
+        {% for message in get_flashed_messages() %}
+        <span class="header_flash">{{ message }}</span>
+        {% endfor %}
 
 	<h1>Ohio Valley Adventure: {{ page.title }} </h1>
 
