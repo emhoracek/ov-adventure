@@ -1,50 +1,67 @@
 {% extends "base.html" %}
 
 {% block nav %}
-
-	<nav id="activitiesList">
-
-	<ul>
+	<nav id="tags">
+        
+        <h1 class="tags_heading">Activities</h1>	
+        <ul id="tags_activities">
 	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
 	{% for listActivity in page.activities %}
-		{% if listActivity==activity %}
-		<li class="activity selected">
+		{% if listActivity.name==page.activity %}
+		<li class="tags_activity selected">
 		{% else %}
-		<li class="activity">
+		<li class="tags_activity">
 		{% endif %}<a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
 	{% endfor %}
-		<li class="activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+		<li class="tags_activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
 
 	</ul>
+
+        <h1 class="tags_heading">Counties</h1>
+        <ul id="tags_counties">
+        {% for listCounty in page.counties %}
+            {% if listCounty.name==page.county %}
+            <li class="tags_county selected">
+            {% else %}
+            <li class="tags_county">
+            {% endif %}<a href="{{ url_for('county', county=listCounty.name) }}">{{ listCounty.name }}</a></li>
+        {% endfor %}
+             <li class="tags_county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
 
 	</nav>	
 {% endblock nav %}
 
 {% block main %}
 
-	<div class="main place">
+	<div class="place">
 		
-		<h1>Name of place</h1>
+            <h1>{{ page.name }} </h1>
 
-		<div class="carousel">
+		<div class="place_carousel">
 			<img src="urlfor static place-thumb1.png">
 			<img src="urlfor static place-thumb2.png">
 			<img src="urlfor static place-thumb3.png">
 		</div>
 
-		<p>A short description of the place.</p>
+                <p>{{ page.description }}</p> 
 
-		<ul class="activitiesInPlace">
-		{% for listActivity in page.activities %}
-			<li class="activity"><a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
-		{% endfor %}
+		<ul class="place_activities">
+		{% for listActivity in page.place_activities %}
+                    <li class="place_activity"><a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
+                {% endfor %}
 		</ul>
 
-		<p>website</p>
-		
-		<p>Contact info</p>
-	</div>
+                {% if not page.website == "" %}
+                <p><a href="{{ page.website }}">Website</p>
+                {% endif %}
 
+                {% if not page.contact == "" %}
+                <p>Contact: {{ page.contact }}</p>
+                {% endif %}
+
+                <p>&nbsp;</p>
+
+        </div>
 
 {% endblock main %}
 
@@ -76,9 +93,7 @@
 
 		map.on('locationerror', onLocationError);
 
-		{% for place in places %} 
-		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map);
-		{% endfor %}
+		var marker = L.marker([{{ page.latitude }}, {{ page.longitude }}]).addTo(map);
 
 	</script>
 {% endblock script %}

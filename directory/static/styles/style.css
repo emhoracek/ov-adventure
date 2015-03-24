@@ -31,7 +31,7 @@ h1 { }
 #tags ul { float: left; padding-left: 1em; padding-right: 1em }
 .tags_nav { list-style-type: none }
 .tags_nav li { display: inline } 
-.tags_heading { margin-top: 1em; margin-left: 1em; font-size: 1em }
+.tags_heading { clear: both; margin-top: 1em; margin-left: 1em; font-size: 1em }
 .tags_activity, .tags_county { display: block;
 	    float: left;
             text-decoration: none;
@@ -63,13 +63,21 @@ h1 { }
         margin-bottom: 2em }
 
 /* The main section on the place page. */
-.place { background-color: #DEDDC5;
-         padding: 1em }
-.carousel { border: 1px solid black;
+.place { position: static;
+         background-color: #DEDDC5;
+	 margin: 0;
+	 padding-top: 1em;
+	 padding-left: 1em; 
+	 text-indent: 0; 
+         list-style-type: none; 
+	 margin: 0;
+	 padding: 1em 2em;
+	 background-color: #DEDDC5 }
+.place_carousel { border: 1px solid black;
             width: 90%;
             margin: auto;
             margin-bottom: 1em; margin-top: 1em }
-.carousel img { width: 30%;
+.place_carousel img { width: 30%;
                 height: 10em }
 .place p { clear: both }
 
@@ -144,6 +152,14 @@ header { position: static;
        margin: 0;
        border-radius: 1em;
        box-shadow: 0em 0.5em 0.25em 0.1em #333 }
+
+.place { position: static;
+        margin-top: 2em;
+        margin-left: 2em;
+        margin-right: 34em;
+        margin-bottom: 1em;
+        border-radius: 0.5em 0.5em 0 0;
+        box-shadow: 0em 0.5em 0.5em 0.25em #333 }
 
 .directory { position: static;
         margin-top: 2em;

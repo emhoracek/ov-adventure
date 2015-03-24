@@ -42,4 +42,10 @@ county_query = ('select places.name, places.description, ' +
               'where counties.name = ? ' +
 	      'order by places.name')
 
+place_query = ('SELECT * FROM places WHERE name = ?')
 
+place_activities = ('SELECT activities.name FROM activities ' + 
+                    'JOIN joinActPlace, places ' + 
+                    'ON places.id = joinActPlace.placeId ' +
+                    'AND activities.id = joinActPlace.activityId ' +
+                    'WHERE places.name = ? ORDER BY activities.name')

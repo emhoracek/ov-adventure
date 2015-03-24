@@ -23,7 +23,8 @@ def page(page=1):
 @app.route('/places')
 @app.route('/places/<place>')
 def places(place=None):
-  thisPage = pages.placePage(place)
+  thisPage = pages.PlacePage(place)
+  print("Hello")
   return render_template('place.html',
 			  page=thisPage)
 
