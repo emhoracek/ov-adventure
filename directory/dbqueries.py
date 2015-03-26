@@ -15,25 +15,52 @@ query_activities = ('select places.name, places.description, counties.name ' +
 
 def get_activities_list():
 	cur = query_db('select name from activities order by name')
-	return [dict(name=row[0]) for row in cur]
+	return [row[0] for row in cur]
 
 def get_counties_list():
         cur = query_db('select name from counties order by name')
-        return [dict(name=row[0]) for row in cur]
-
+        return [row[0] for row in cur]
+    
 full_query = ('select places.name, places.description, ' +
 	      'counties.name, places.latitude, places.longitude ' +
 	      'FROM places JOIN counties ' +
 	      'ON places.countyId = counties.id '
 	      'order by places.name')
 
-
-query_join = (' select places.name, places.description, counties.name, '+
-	      ' places.latitude, places.longitude ' +
-	      ' FROM places, counties JOIN joinActPlace, activities ' +
-	      ' ON places.id = joinActPlace.placeId AND ' +
-	      ' activities.id = joinActPlace.activityId ' +  
-	      ' where activities.name = ? AND counties.id = places.countyId')
+def superQuery (selected):
+    all_counties = get_counties_list()
+    all_activities = get_activities_list()
+    activities = []
+    counties = []
+    for selection in selected:
+        if selection in all_counties:
+            counties.append(selection)
+        if selection in all_activities:
+            activities.append(selection)
+    longquery = ( '' +
+            'SELECT places.name, places.description, counties.name, ' + 
+            'places.latitude, places.longitude, GROUP_CONCAT(activities.name) ' + 
+            'FROM counties, places LEFT JOIN joinActPlace LEFT JOIN activities ' +
+            'ON places.id = joinActPlace.placeId AND ' +
+            'activities.id = joinActPlace.activityId ' +
+            'WHERE places.countyId = counties.id ' + 
+            'GROUP BY places.id')
+    cur = query_db(longquery)
+    places = [dict(name=row[0],
+                 description = row[1],
+                 area = row[2],
+                 latitude = row[3],
+                 longitude = row[4],
+                 actList = row[5]) for row in cur ]
+    if counties != []:
+        places = [row for row in places if row['area'] in counties]
+    def f(d):
+        if activities == []:
+            return True
+        if d['actList'] is None:
+            return False
+        return set(d['actList'].split(',')).issuperset(activities)
+    return filter(f, places)
 
 county_query = ('select places.name, places.description, ' +
 	      'counties.name, places.latitude, places.longitude ' +

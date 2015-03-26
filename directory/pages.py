@@ -7,8 +7,8 @@ import sys
 PLACES_PER_PAGE = 10
 
 # TODO: consider using methods in Jinja template, object
-def frontPage (title='Home', activity=None, county=None, page=1):
-    placesList = getPlaceList(activity, county)
+def frontPage (title='Home', selected=[], page=1):
+    placesList = PlaceList(selected)
     numPlaces = placesList.length() / PLACES_PER_PAGE
     numPages = math.ceil (float(placesList.length()) / 
                                       PLACES_PER_PAGE)
@@ -16,13 +16,17 @@ def frontPage (title='Home', activity=None, county=None, page=1):
       hasPages = True
     else:
       hasPages = False
+    activities= dbqueries.get_activities_list()
+    counties = dbqueries.get_counties_list()
+    selected_activities = [s for s in selected if s in activities]
+    selected_counties = [s for s in selected if s in counties]
     places = placesList.shorten_place_list(page, PLACES_PER_PAGE)
     return dict(title= title,
-             activities= dbqueries.get_activities_list(),
-             counties = dbqueries.get_counties_list(),
-             activity = activity,
-             county = county,
-             page= page,
+             activities = activities,
+             counties = counties,
+             selected = selected,
+             selected_counties = selected_counties,
+             selected_activities = selected_activities,
              numPlaces= numPlaces,
              numPages= numPages,
              hasPages= hasPages,
@@ -51,17 +55,6 @@ class PlacePage:
         else: 
             self.place_activities = list(place_activities)
         self.title = place
+        self.args = []
         self.mapCenter = { 'latitude': self.latitude, 'longitude': self.longitude } 
-
-def getPlaceList (activity=None, county=None):
-    if (activity == None and county == None):
-      cur = dbqueries.query_db(dbqueries.full_query)
-      return PlaceList(cur)
-    else:
-        if (county == None):
-            cur = dbqueries.query_db(dbqueries.query_join, (activity,))
-            return PlaceList(cur)
-        else:
-            cur = dbqueries.query_db(dbqueries.county_query, (county,))
-            return PlaceList(cur)
 

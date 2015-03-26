@@ -2,12 +2,18 @@ from flask import g
 import dbqueries
 
 class PlaceList (object):
-  def __init__(self, cur):
-		self.list = [dict(name=row[0], 
-		                  description=row[1],
-		                  area=row[2],
-		         	  latitude=row[3],
-		          	  longitude=row[4]) for row in cur]
+  def __init__(self, selected):
+    
+#      if (selected == []):
+#        cur = dbqueries.query_db(dbqueries.full_query)
+#        self.list = [dict(name=row[0], 
+#	                  description=row[1],
+#	                  area=row[2],
+#	         	  latitude=row[3],
+#	          	  longitude=row[4]) for row in cur]
+#      else:
+        self.list = dbqueries.superQuery(selected)
+      
   def length(self):
 		return len(self.list)
 
@@ -36,4 +42,10 @@ class PlaceList (object):
     return { 'latitude': average_latitude,
       			 'longitude': average_longitude }
 
-
+def getPlaceList (selected):
+    if (selected == []):
+      cur = dbqueries.query_db(dbqueries.full_query)
+      return PlaceList(cur)
+    else:
+      cur = dbqueries.superQuery(selected)
+      return PlaceList(cur)

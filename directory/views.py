@@ -1,6 +1,6 @@
 from flask import render_template, g, request, session, flash, redirect, url_for, abort
 from directory import app
-import pages, dbinserts, placeList, users
+import pages, dbinserts, placeList, users, dbqueries
 import os, math
 import dbqueries
 
@@ -15,7 +15,7 @@ def index():
 @app.route('/page')
 @app.route('/page/<int:page>')
 def page(page=1):
-  thisPage = pages.frontPage('Page %s '% page, None, None, page)
+  thisPage = pages.frontPage('Page %s '% page, [], page)
   return render_template('index.html',
           page=thisPage,
           places=thisPage['places'])			        
@@ -24,23 +24,46 @@ def page(page=1):
 @app.route('/places/<place>')
 def places(place=None):
   thisPage = pages.PlacePage(place)
-  print("Hello")
   return render_template('place.html',
 			  page=thisPage)
 
-@app.route('/tags/<searchargs>')
-def tags(tags=None):
-    params = search-args.split('&')
-    # params is a list of stuff like ['county=Ohio', 'activity=running']
-    # convert list to dict of (country||activity: value)
-    thisPage = pages.frontPage()
+@app.route('/tags/<tagargs>')
+def tags(tagargs=[]):
+    params = tagargs.split('&')
+    page = pages.frontPage(selected=params)
+    def list_string(l, divider):
+        if len(page[l]) < 3:
+            return divider.join(page[l])
+        else:         
+            return (', '.join(page[l][0:-1]) +
+            ',' + divider + page[l][-1])
+    def tag_string():
+        if page['selected_activities'] == []:
+            starter = "Places in "
+        else:
+            starter = "Places with "
+        if page['selected_counties'] == []:
+            transition = ""
+            end = "."
+        else:
+            transition = " in "
+            end = " counties." if len(page['selected_counties']) > 1 else " county."
+        return (starter + 
+               list_string('selected_activities', " and ") +
+               transition +
+               list_string('selected_counties', " or ") + 
+               end)
+    print tag_string()
+    print page['selected_counties']
     return render_template('index.html',
-                           page=thisPage)
+                           page=page,
+                           tagInfo = tag_string(),
+                           places = page['places'])
 
 @app.route('/activities')
 @app.route('/activities/<activity>')
 def activity(activity=None):
-  thisPage = pages.frontPage(activity, activity, None, 1)
+  thisPage = pages.frontPage(activity, [activity], 1)
   return render_template('index.html',
           page=thisPage,
           places=thisPage['places'])
@@ -48,7 +71,7 @@ def activity(activity=None):
 @app.route('/counties')
 @app.route('/counties/<county>')
 def county(county=None):
-    thisPage = pages.frontPage(county, None, county, 1)
+    thisPage = pages.frontPage(county, [county], 1)
     return render_template('index.html',
                            page=thisPage,
                            places=thisPage['places'])
