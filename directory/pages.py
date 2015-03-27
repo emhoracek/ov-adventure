@@ -1,8 +1,10 @@
 from flask import g
-from directory import dbqueries
+from directory import dbqueries, app
 from placeList import PlaceList
 import math
 import sys
+from os import listdir
+
 
 PLACES_PER_PAGE = 10
 
@@ -54,6 +56,9 @@ class PlacePage:
             self.place_activities = ["None"]
         else: 
             self.place_activities = list(place_activities)
+        self.images = [image for image in listdir(app.config['PHOTOS']) 
+                        if image.startswith(self.name)]
+        print self.images
         self.title = place
         self.args = []
         self.mapCenter = { 'latitude': self.latitude, 'longitude': self.longitude } 

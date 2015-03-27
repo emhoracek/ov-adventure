@@ -18,7 +18,7 @@ header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
          text-align: center;
 	       font-family: sans;
       	 color: #5C594D }
-h1 { } 
+.header_header { padding: 1em } 
 .header_metanav { background-color: #67B5AB;
 	 padding: 1em;
 	 margin: 0; }

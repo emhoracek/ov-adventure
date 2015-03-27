@@ -37,10 +37,12 @@
 		
             <h1>{{ page.name }} </h1>
 
-		<div class="place_carousel">
-			<img src="urlfor static place-thumb1.png">
-			<img src="urlfor static place-thumb2.png">
-			<img src="urlfor static place-thumb3.png">
+            <div>
+                {% for image in page.images %}
+                {% set image = 'images/' + image %}
+                <p>Should be {{ image }} here! </p>
+                <img src="{{ url_for('static', filename = image ) }}">
+                {% endfor %}
 		</div>
 
                 <p>{{ page.description }}</p> 

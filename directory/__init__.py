@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 app.config.update(dict(
 	DATABASE='/tmp/adventure.db', # why put it in tmp? because you don't want to version control it and this way the OS will clean it up for you
+        PHOTOS = '/home/libby/dev/outdoorRec/directory/static/images/',
         DEBUG=True,
 	SECRET_KEY='development key', # probably for cookies, maybe not needed
 ))
