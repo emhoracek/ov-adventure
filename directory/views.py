@@ -23,9 +23,9 @@ def page(page=1):
 @app.route('/places')
 @app.route('/places/<place>')
 def places(place=None):
-  thisPage = pages.PlacePage(place)
+  page = pages.PlacePage(place)
   return render_template('place.html',
-			  page=thisPage)
+			  page=page)
 
 @app.route('/tags/<tagargs>')
 def tags(tagargs=[]):

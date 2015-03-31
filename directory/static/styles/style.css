@@ -79,6 +79,19 @@ header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
             margin-bottom: 1em; margin-top: 1em }
 .place_carousel img { width: 30%;
                 height: 10em }
+.place_activity { display: block; 
+                  float:left;
+                  text-decoration: none;
+                  text-indent: 0;
+                  padding: 0.5em;
+                  padding-top: 0.1em;
+                  padding-bottom: 0.1em;
+	          margin: 0.1em;
+                  border-radius: 1em;
+	          background-color: #67B5AB;
+                  color: #DEDDC5}
+.place_activity a { color: #DEDDC5;
+                    text-decoration: none }
 .place p { clear: both }
 
 /* The main section on the directory page. */

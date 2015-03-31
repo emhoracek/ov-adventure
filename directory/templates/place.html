@@ -1,34 +1,58 @@
 {% extends "base.html" %}
 
 {% block nav %}
-	<nav id="tags">
+
+    <nav id="tags">
         
-        <h1 class="tags_heading">Activities</h1>	
-        <ul id="tags_activities">
-	<!-- This goes through all the activities, adds "selected" class if it's selected, and displays it. -->
+    <h1 class="tags_heading">Activities</h1>	
+    
+    <ul id="tags_activities">
+	<!-- Goes through each activity, adds "selected" class if it's selected, and displays it. -->
 	{% for listActivity in page.activities %}
-		{% if listActivity.name==page.activity %}
-		<li class="tags_activity selected">
-		{% else %}
-		<li class="tags_activity">
-		{% endif %}<a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
-	{% endfor %}
-		<li class="tags_activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+        {% with tagargs = page.selected|join('&') %}<!-- selected tags as a string -->
+            <!-- sets the class of the button and what tags are in the link -->
+	    {% if listActivity in page.selected_actitivites %}
+              <li class="tags_activity selected">
+	    {% else %}
+              <li class="tags_activity">
+              {% if tagargs == "" %}
+                {% set tagargs = listActivity %}
+              {% else %}
+                {% set tagargs = tagargs ~ "&" ~ listActivity %}
+              {% endif %}
+	    {% endif %}
+            <!-- The actual link -->
+            <a href="{{ url_for('tags', tagargs=tagargs) }}">{{ listActivity }}</a></li>
+            {% endwith %}
+	  {% endfor %}
+        <li class="tags_activity clear"><a href="{{ url_for('index', activity=None) }}">clear</a></li>
+    </ul>
 
-	</ul>
+    <h1 class="tags_heading">Counties</h1>
 
-        <h1 class="tags_heading">Counties</h1>
-        <ul id="tags_counties">
-        {% for listCounty in page.counties %}
-            {% if listCounty.name==page.county %}
-            <li class="tags_county selected">
-            {% else %}
-            <li class="tags_county">
-            {% endif %}<a href="{{ url_for('county', county=listCounty.name) }}">{{ listCounty.name }}</a></li>
-        {% endfor %}
-             <li class="tags_county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
+    <ul id="tags_counties">
+	<!-- Goes through each county, adds "selected" class if it's selected, and displays it. -->
+	{% for listCounty in page.counties %}
+        {% with tagargs = page.selected|join('&') %}<!-- selected tags as a string -->
+            <!-- sets the class of the button and what tags are in the link -->
+	    {% if listCounty in page.selected_counties %}
+              <li class="tags_county selected">
+	    {% else %}
+              <li class="tags_county">
+              {% if tagargs == "" %}
+                {% set tagargs = listCounty %}
+              {% else %}
+                {% set tagargs = tagargs ~ "&" ~ listCounty %}
+              {% endif %}
+	    {% endif %}
+            <!-- The actual link -->
+            <a href="{{ url_for('tags', tagargs=tagargs) }}">{{ listCounty }}</a></li>
+            {% endwith %}
+	  {% endfor %}
+        <li class="tags_county clear"><a href="{{ url_for('index', county=None) }}">clear</a></li>
+    </ul>
 
-	</nav>	
+    </nav> 
 {% endblock nav %}
 
 {% block main %}
@@ -37,31 +61,33 @@
 		
             <h1>{{ page.name }} </h1>
 
-            <div>
+            <div class="place_carousel">
                 {% for image in page.images %}
                 {% set image = 'images/' + image %}
-                <p>Should be {{ image }} here! </p>
                 <img src="{{ url_for('static', filename = image ) }}">
                 {% endfor %}
-		</div>
+	    </div>
 
-                <p>{{ page.description }}</p> 
+            <p>{{ page.description }}</p> 
 
-		<ul class="place_activities">
-		{% for listActivity in page.place_activities %}
+            {% if page.place_activities %}
+            <h3>Activities</h3>
+            <ul class="place_activities">
+            	{% for listActivity in page.place_activities %}
                     <li class="place_activity"><a href="{{ url_for('activity', activity=listActivity.name) }}">{{ listActivity.name }}</a></li>
                 {% endfor %}
-		</ul>
+	    </ul>
+            {% endif %}
 
-                {% if not page.website == "" %}
-                <p><a href="{{ page.website }}">Website</p>
-                {% endif %}
+             {% if not page.website == "" %}
+             <p><a href="{{ page.website }}">Website</a></p>
+             {% endif %}
 
-                {% if not page.contact == "" %}
-                <p>Contact: {{ page.contact }}</p>
-                {% endif %}
+             {% if not page.contact == "" %}
+             <p>Contact: {{ page.contact }}</p>
+             {% endif %}
 
-                <p>&nbsp;</p>
+             <p>&nbsp;</p>
 
         </div>
 
