@@ -7,14 +7,14 @@ app = Flask(__name__)
 
 app.config.update(dict(
 	DATABASE='/tmp/adventure.db', # why put it in tmp? because you don't want to version control it and this way the OS will clean it up for you
-        PHOTOS = '/home/libby/dev/outdoorRec/directory/static/images/',
+        PHOTOS = '/static/images/',
         DEBUG=True,
 	SECRET_KEY='development key', # probably for cookies, maybe not needed
 ))
 
 # TODO : Look up config.from_envvar
 # what is this for? "silent"?
-#app.config.from_envvar('ADVENTURE_SETTINGS', silent=True)
+app.config.from_envvar('ADVENTURE_SETTINGS', silent=False)
 
 def connect_db():
         "Connects to the database, returns a connection object"
