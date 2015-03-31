@@ -66,11 +66,10 @@
 	<ul class="directory_list">
 	
         {% for place in places %}
-	<li class="directory_card"><a href="{{ url_for( '.places', place=place.name ) }}" class="card_name">
+	<li class="directory_card"><a href="{{ url_for( 'places', place=place.name ) }}" class="card_name">
 		    {{ place.name }}</a> 
 	    <span class="card_description">{{ place.description }}</span>
-	    <span class="card_area">{{ place.area }}</span>
-            <span class="card_activities">{{ place.actList }}</span>
+	    <span class="card_area">{{ place.area }} County.</span>
         </li>	
 	{% else %} 
 	<p>No matches.</p>
@@ -120,7 +119,8 @@
 		map.on('locationerror', onLocationError);
 
 		{% for place in places %} 
-		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map);
+		var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]).addTo(map)
+                    .bindPopup('<a href="{{ url_for('places', place=place.name) }}">{{ place.name }}</a>'); 
 		{% endfor %}
 
 	</script>
