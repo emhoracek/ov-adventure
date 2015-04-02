@@ -32,6 +32,7 @@ def frontPage (title='Home', selected=[], page=1):
              numPlaces= numPlaces,
              numPages= numPages,
              hasPages= hasPages,
+             TILE_SERVER = app.config['TILE_SERVER'],
              places= places, 
              mapCenter= placesList.get_average_latlong(places))
 
@@ -61,5 +62,6 @@ class PlacePage:
         print self.images
         self.title = place
         self.args = []
+        self.tiles = app.config['TILE_SERVER']
         self.mapCenter = { 'latitude': self.latitude, 'longitude': self.longitude } 
 
