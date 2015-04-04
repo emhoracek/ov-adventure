@@ -97,25 +97,25 @@ header { background-image: url("../images/lrgImages/oglebaytrees.jpg");
 /* The main section on the directory page. */
 .directory { box-shadow: none }
 .directory_search { position: static;
-		  background-color: #DEDDC5;
-		  margin: 0;
-		  padding-top: 1em;
-		  padding-left: 1em }	     
+		    background-color: #DEDDC5;
+		    margin: 0;
+		    padding-top: 1em;
+		    padding-left: 1em }	     
 .directory_list { display: block;
-	   text-indent: 0; 
-     list-style-type: none; 
-	   margin: 0;
-	   padding: 1em 2em;
-	   background-color: #DEDDC5 }
+            	  text-indent: 0; 
+                  list-style-type: none; 
+	          margin: 0;
+	          padding: 1em 2em;
+        	  background-color: #DEDDC5 }
 .directory_card { background-color: #F2F1E8;
-	   padding: 1em;
-	   margin: 0.5em 0em;
-	   border: 1px solid #5C594D }
+	          padding: 1em;
+                  margin: 0.5em 0em;
+	          border: 1px solid #5C594D }
 .card_name {}
 .card_description::before { content: " \2014 \00a0"}
 .card_description {}
 .card_description::after { content: " \2014 "}
-.card_area::before { content: " at " }
+.card_area::before { content: " in " }
 .card_area {}
 .directory_numbers { background-color: #DEDDC5 }
 .directory a { color:  #67B5AB }
@@ -172,23 +172,32 @@ header { position: static;
         margin-right: 34em;
         margin-bottom: 1em;
         border-radius: 0.5em 0.5em 0 0;
-        box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+        box-shadow: 0em 0.5em 0.5em 0em #333 }
 
 .directory { position: static;
         margin-top: 2em;
         margin-left: 2em;
         margin-right: 34em;
-        border-top-right-radius: 1em;
-        box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+        border-top-right-radius: 1em }
 
 .directory { box-shadow: none }
 .directory_search { width: 25em;
-		  padding-top: 1em;
-		  padding-left: 1em;
+                  height: 2.5em;
 		  border-radius: 0.5em 0.5em 0 0;
 		  box-shadow: 0em 0.5em 0.5em 0.25em #333 }
+.directory_search p { margin: 1em }
+.directory_search::after { 
+        display: block;
+        content: "";
+        position: relative; 
+        left: -1em; right: 1em; top: 0; bottom: 1em;
+        height: 1em;
+        z-index: 1;
+        width: 26em;
+        color: red; 
+        background: #DEDDC5 }
 
-.directory_list { margin: 0;
+.directory_list { position: relative; top: -1em; margin: 0; 
 	   margin-bottom: 1em;
 	   padding: 1em 2em;
 	   border-radius: 0 1em 0em 0;
