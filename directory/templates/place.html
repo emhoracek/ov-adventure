@@ -68,7 +68,7 @@
                 {% endfor %}
 	    </div>
 
-            <p>{{ page.description }}</p> 
+            <p>{{ page.description|safe }}</p> 
 
             {% if page.place_activities %}
             <h3>Activities</h3>

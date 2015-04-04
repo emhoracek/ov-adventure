@@ -4,7 +4,7 @@ from placeList import PlaceList
 import math
 import sys
 from os import listdir
-
+import requests
 
 PLACES_PER_PAGE = 10
 
@@ -59,9 +59,13 @@ class PlacePage:
             self.place_activities = list(place_activities)
         self.images = [image for image in listdir(app.config['PHOTOS']) 
                         if image.startswith(self.name)]
-        print self.images
+        #if (self.description == ""):
+        if (True):
+            r = requests.get("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" + self.name + "&exsentences=5&format=json")
+            self.description = r.json()['query']['pages'].itervalues().next()['extract']
         self.title = place
         self.args = []
         self.tiles = app.config['TILE_SERVER']
         self.mapCenter = { 'latitude': self.latitude, 'longitude': self.longitude } 
+
 
