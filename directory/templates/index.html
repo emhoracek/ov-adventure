@@ -60,7 +60,11 @@
 	<div class="directory">
 
 	<form class="directory_search">
+        {% if tagInfo %}
         {{ tagInfo }}
+        {% else %} 
+        &nbsp;
+        {% endif %}
 	</form>
 
 	<ul class="directory_list">
